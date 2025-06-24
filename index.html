@@ -6,21 +6,36 @@
   <title>Dionysis Theodosis - GitHub Profile</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
-    // Enable dark mode by default
     tailwind.config = {
       darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            emerald: {
+              DEFAULT: '#10b981',
+              dark: '#047857'
+            }
+          }
+        }
+      }
     }
   </script>
 </head>
-<body class="bg-gray-900 text-gray-100 min-h-screen flex items-center justify-center p-6">
-  <div class="max-w-md text-center space-y-6">
-    <h1 class="text-4xl font-bold">This is my profile</h1>
-    <p class="text-xl">I am <span class="font-semibold">Dionysis Theodosis</span></p>
-    <p>I am a student in a university</p>
+<body class="bg-gradient-to-b from-gray-900 to-gray-800 text-gray-100 min-h-screen flex items-center justify-center p-6">
+  <div class="max-w-md text-center space-y-6 bg-gray-800 bg-opacity-50 p-8 rounded-2xl shadow-lg">
+    <!-- Profile Photo -->
+    <div class="flex justify-center">
+      <img src="https://github.com/dionysis-theodosis.png?size=200" alt="Dionysis Theodosis" 
+           class="w-40 h-40 rounded-full ring-4 ring-emerald-500 shadow-xl" />
+    </div>
+
+    <h1 class="text-4xl font-extrabold">Dionysis Theodosis</h1>
+    <p class="text-lg text-gray-300">University Student & Java Developer</p>
+
     <a href="https://github.com/dionysis-theodosis" target="_blank" rel="noopener noreferrer"
-       class="inline-block mt-4 px-6 py-2 bg-blue-600 hover:bg-blue-700 rounded text-white font-medium transition">
-      Go to my GitHub repo
-    </a>
+       class="inline-block mt-4 px-6 py-2 bg-emerald hover:bg-emerald-dark text-white font-medium rounded-full transition-shadow shadow-md hover:shadow-lg">
+      View My GitHub
+n    </a>
   </div>
 </body>
 </html>
