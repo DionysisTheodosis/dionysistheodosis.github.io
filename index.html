@@ -56,7 +56,7 @@
 
   <!-- Header -->
   <header
-    class="w-full bg-emerald p-6 flex flex-col sm:flex-row items-center justify-between rounded-b-[3rem] shadow-lg"
+    class="w-full bg-gray-900 p-6 flex flex-col sm:flex-row items-center justify-between rounded-b-[3rem] shadow-lg"
   >
     <div class="flex items-center space-x-4">
       <img
@@ -66,7 +66,7 @@
       />
       <div>
         <h1 class="text-3xl font-extrabold text-white">Dionysis Theodosis</h1>
-        <p class="text-green-100 font-medium">University Student • Java & Web Development Enthusiast</p>
+        <p class="text-green-300 font-medium">University Student • Java & Web Development Enthusiast</p>
       </div>
     </div>
     <a
@@ -79,15 +79,31 @@
     </a>
   </header>
 
-  <!-- Divider -->
-<div class="relative text-center my-12 max-w-4xl w-full px-6 mx-auto flex items-center">
-  <div class="flex-grow border-t border-emerald-700"></div>
-  <h2 class="text-xl font-bold text-emerald-400 px-4">
-    Projects
-  </h2>
-  <div class="flex-grow border-t border-emerald-700"></div>
-</div>
+  <!-- Sections Headers Side by Side -->
+  <div class="max-w-4xl w-full px-6 mx-auto my-12">
+    <div class="flex flex-col lg:flex-row lg:space-x-8 items-center justify-center">
 
+      <!-- Projects Header -->
+      <div class="flex items-center flex-grow border-t border-emerald-700">
+        <h2 class="text-xl font-bold text-emerald-400 px-4 bg-gray-900">
+          Projects
+        </h2>
+        <div class="flex-grow border-t border-emerald-700"></div>
+      </div>
+
+      <!-- Spacer on small screens -->
+      <div class="my-6 lg:my-0"></div>
+
+      <!-- Currently Working On Header -->
+      <div class="flex items-center flex-grow border-t border-emerald-700">
+        <h2 class="text-xl font-bold text-emerald-400 px-4 bg-gray-900">
+          Currently Working On
+        </h2>
+        <div class="flex-grow border-t border-emerald-700"></div>
+      </div>
+
+    </div>
+  </div>
 
   <!-- Projects Grid -->
   <section class="grid grid-cols-1 sm:grid-cols-2 gap-8 max-w-4xl w-full px-6 mb-20">
@@ -148,51 +164,34 @@
     </article>
 
   </section>
-<div class="relative text-center my-12 max-w-4xl w-full px-6 mx-auto flex items-center">
-  <div class="flex-grow border-t border-emerald-700"></div>
-  <h2 class="text-xl font-bold text-emerald-400 px-4">
-      Currently Working On
-  </h2>
-  <div class="flex-grow border-t border-emerald-700"></div>
-</div>
 
+  <!-- Currently Working On Cards -->
+  <section class="max-w-4xl w-full px-6 mb-20 space-y-10">
 
-  <section class="max-w-4xl w-full px-6 mb-20 space-y-6">
-
-    <article class="bg-white/5 backdrop-blur-md border border-white/10 p-6 rounded-xl shadow-xl animate-fade-in">
-      <h3 class="text-2xl font-semibold mb-2">RESTful Mobile Phones Management Service</h3>
+    <article class="bg-white/5 backdrop-blur-md border border-white/10 p-6 rounded-xl shadow-xl hover:scale-[1.02] transition-transform animate-fade-in">
+      <h3 class="text-2xl font-semibold mb-2">Online Car Repair Shop Web App</h3>
       <p class="text-gray-300 mb-4">
-        Developing the backend REST API for mobile phones store management using Spring Boot and JPA with full CRUD.
+        Building a full CRUD car repair workshop management app with Spring Boot backend and Vue.js frontend for appointment scheduling and customer management.
       </p>
-      <a href="https://github.com/DionysisTheodosis/Cloud-Technologies-2025" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-emerald-400 hover:text-emerald-600 font-semibold">
-        <i data-lucide="github" class="w-5 h-5 mr-1"></i> Repository
+      <a href="https://github.com/DionysisTheodosis/Car-Repair-Web-App" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-emerald-400 hover:text-emerald-600 font-semibold">
+        <i data-lucide="github" class="w-5 h-5 mr-1"></i> View on GitHub
       </a>
     </article>
 
-    <article class="bg-white/5 backdrop-blur-md border border-white/10 p-6 rounded-xl shadow-xl animate-fade-in">
-      <h3 class="text-2xl font-semibold mb-2">Full CRUD Car Repair Web Application</h3>
+    <article class="bg-white/5 backdrop-blur-md border border-white/10 p-6 rounded-xl shadow-xl hover:scale-[1.02] transition-transform animate-fade-in">
+      <h3 class="text-2xl font-semibold mb-2">Mobile Phones Online Store API</h3>
       <p class="text-gray-300 mb-4">
-        Building a full CRUD app for car repair using Spring Boot backend and Vue.js frontend.
+        Developing RESTful service backend for mobile phones management including CRUD operations, built with Spring Boot and JPA.
       </p>
-      <a href="https://github.com/DionysisTheodosis/Web-Development-2025" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-emerald-400 hover:text-emerald-600 font-semibold">
-        <i data-lucide="github" class="w-5 h-5 mr-1"></i> Repository
-      </a>
-    </article>
-
-    <article class="bg-white/5 backdrop-blur-md border border-white/10 p-6 rounded-xl shadow-xl animate-fade-in">
-      <h3 class="text-2xl font-semibold mb-2">Music Festival Management Backend</h3>
-      <p class="text-gray-300 mb-4">
-        Working on RESTful backend system to manage music festivals and performances.
-      </p>
-      <a href="https://github.com/DionysisTheodosis/Web-Development-2025" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-emerald-400 hover:text-emerald-600 font-semibold">
-        <i data-lucide="github" class="w-5 h-5 mr-1"></i> Repository
+      <a href="https://github.com/DionysisTheodosis/Mobile-Phones-API" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-emerald-400 hover:text-emerald-600 font-semibold">
+        <i data-lucide="github" class="w-5 h-5 mr-1"></i> View on GitHub
       </a>
     </article>
 
   </section>
 
   <script>
-    // Initialize lucide icons
+    // Initialize Lucide icons
     lucide.createIcons();
   </script>
 </body>
