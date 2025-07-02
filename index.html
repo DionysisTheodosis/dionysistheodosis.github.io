@@ -21,21 +21,79 @@
     }
   </script>
 </head>
-<body class="bg-gradient-to-b from-gray-900 to-gray-800 text-gray-100 min-h-screen flex items-center justify-center p-6">
-  <div class="max-w-md text-center space-y-6 bg-gray-800 bg-opacity-50 p-8 rounded-2xl shadow-lg">
-    <!-- Profile Photo -->
-    <div class="flex justify-center">
-      <img src="https://avatars.githubusercontent.com/u/63193630?v=4?size=200" alt="Dionysis Theodosis" 
-           class="w-40 h-40 rounded-full ring-4 ring-emerald-500 shadow-xl" />
+<body class="bg-gradient-to-b from-gray-900 to-gray-800 text-gray-100 min-h-screen p-6">
+  <main class="max-w-5xl mx-auto space-y-12">
+
+    <!-- Profile -->
+    <div class="text-center bg-gray-800 bg-opacity-50 p-8 rounded-2xl shadow-lg space-y-4">
+      <img src="https://avatars.githubusercontent.com/u/63193630?v=4" alt="Dionysis Theodosis"
+           class="w-40 h-40 rounded-full ring-4 ring-emerald-500 shadow-xl mx-auto" />
+      <h1 class="text-4xl font-extrabold">Dionysis Theodosis</h1>
+      <p class="text-lg text-gray-300">University Student • Java & Web Development Enthusiast</p>
+      <a href="https://github.com/dionysistheodosis" target="_blank"
+         class="inline-block mt-2 px-6 py-2 bg-emerald hover:bg-emerald-dark text-white font-medium rounded-full shadow hover:shadow-lg transition">
+        View My GitHub
+      </a>
     </div>
 
-    <h1 class="text-4xl font-extrabold">Dionysis Theodosis</h1>
-    <p class="text-lg text-gray-300">University Student & Java Lover</p>
+    <!-- Currently Working On -->
+    <section class="bg-gray-800 bg-opacity-50 p-6 rounded-2xl shadow-md">
+      <h2 class="text-2xl font-bold mb-4 text-emerald">🚧 Currently Working On</h2>
+      <ul class="space-y-6">
+        <li>
+          <h3 class="font-semibold text-lg">📱 Mobile Phone Store REST API</h3>
+          <p class="text-gray-300">
+            Backend Spring Boot project to manage mobile phones and online store operations. Includes full CRUD with JPA.
+          </p>
+        </li>
+        <li>
+          <h3 class="font-semibold text-lg">🛠 Car Repair Workshop Management (Full Stack)</h3>
+          <p class="text-gray-300">
+            Full CRUD web app using Spring Boot and Vue.js. Manages users, vehicles, and repair services.
+          </p>
+        </li>
+        <li>
+          <h3 class="font-semibold text-lg">🎵 Music Festival Management System</h3>
+          <p class="text-gray-300">
+            RESTful backend for managing music festivals, submissions, scheduling, and user roles with a connected database.
+          </p>
+        </li>
+      </ul>
+    </section>
 
-    <a href="https://github.com/dionysistheodosis" target="_blank" rel="noopener noreferrer"
-       class="inline-block mt-4 px-6 py-2 bg-emerald hover:bg-emerald-dark text-white font-medium rounded-full transition-shadow shadow-md hover:shadow-lg">
-      View My GitHub 
-    </a>
-  </div>
+    <!-- Project Portfolio -->
+    <section class="bg-gray-800 bg-opacity-50 p-6 rounded-2xl shadow-md">
+      <h2 class="text-2xl font-bold mb-6 text-emerald">📂 My Projects</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+        <!-- Android GPX Tracker -->
+        <div class="bg-gray-700 p-5 rounded-xl shadow hover:shadow-lg transition">
+          <h3 class="text-xl font-semibold mb-1">📍 Android GPX Tracker</h3>
+          <p class="text-gray-300 text-sm mb-2">
+            Android app to upload, store, and visualize hiking routes from GPX files. Supports real-time tracking.
+          </p>
+          <p class="text-sm text-gray-400 mb-1">Kotlin • Google Maps • Firebase Firestore</p>
+          <a href="https://github.com/dionysistheodosis/android-gpx-tracker" target="_blank"
+             class="text-emerald-400 hover:underline">
+            View on GitHub →
+          </a>
+        </div>
+
+        <!-- MedCare -->
+        <div class="bg-gray-700 p-5 rounded-xl shadow hover:shadow-lg transition">
+          <h3 class="text-xl font-semibold mb-1">🩺 MedCare - Doctor Appointment Platform</h3>
+          <p class="text-gray-300 text-sm mb-2">
+            Full-stack web app for patients, doctors, and admins to manage appointments and schedules.
+          </p>
+          <p class="text-sm text-gray-400 mb-1">Spring Boot • REST API • Docker</p>
+          <a href="https://github.com/dionysistheodosis/medcare-platform" target="_blank"
+             class="text-emerald-400 hover:underline">
+            View on GitHub →
+          </a>
+        </div>
+
+      </div>
+    </section>
+  </main>
 </body>
 </html>
