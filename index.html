@@ -52,147 +52,140 @@
     }
   </style>
 </head>
-<body class="flex flex-col items-center">
+<body class="flex flex-col items-center min-h-screen">
 
   <!-- Header -->
   <header
-    class="w-full bg-gray-900 p-6 flex flex-col sm:flex-row items-center justify-between rounded-b-[3rem] shadow-lg"
+    class="w-full max-w-md bg-gray-900 bg-opacity-80 p-8 rounded-b-[3rem] shadow-lg flex flex-col items-center space-y-6"
   >
-    <div class="flex items-center space-x-4">
-      <img
-        src="https://avatars.githubusercontent.com/u/63193630?v=4?size=200"
-        alt="Dionysis Theodosis"
-        class="w-20 h-20 rounded-full ring-4 ring-emerald-dark shadow-xl"
-      />
-      <div>
-        <h1 class="text-3xl font-extrabold text-white">Dionysis Theodosis</h1>
-        <p class="text-green-300 font-medium">University Student • Java & Web Development Enthusiast</p>
-      </div>
+    <img
+      src="https://avatars.githubusercontent.com/u/63193630?v=4?size=200"
+      alt="Dionysis Theodosis"
+      class="w-24 h-24 rounded-full ring-4 ring-emerald-dark shadow-xl"
+    />
+    <div class="text-center">
+      <h1 class="text-3xl font-extrabold text-white">Dionysis Theodosis</h1>
+      <p class="text-green-300 font-medium mt-1">University Student • Java & Web Development Enthusiast</p>
     </div>
     <a
       href="https://github.com/dionysistheodosis"
       target="_blank"
       rel="noopener noreferrer"
-      class="mt-4 sm:mt-0 inline-block px-6 py-3 bg-white text-emerald-700 font-semibold rounded-full shadow-md hover:bg-green-50 transition"
+      class="inline-block px-8 py-3 bg-emerald text-white font-semibold rounded-full shadow-md hover:bg-emerald-dark transition"
     >
       View My GitHub
     </a>
   </header>
 
-  <!-- Sections Headers Side by Side -->
-  <div class="max-w-4xl w-full px-6 mx-auto my-12">
-    <div class="flex flex-col lg:flex-row lg:space-x-8 items-center justify-center">
+  <!-- Main Content: Projects and Currently Working On side by side on lg+ screens -->
+  <main class="flex flex-col lg:flex-row lg:space-x-12 max-w-6xl w-full px-6 mt-16 mb-20">
 
-      <!-- Projects Header -->
-      <div class="flex items-center flex-grow border-t border-emerald-700">
-        <h2 class="text-xl font-bold text-emerald-400 px-4 bg-gray-900">
-          Projects
-        </h2>
-        <div class="flex-grow border-t border-emerald-700"></div>
+    <!-- Projects Section -->
+    <section class="lg:flex-1">
+      <div class="relative text-center mb-8">
+        <h2 class="text-2xl font-bold text-emerald-400">Projects</h2>
+        <div class="mt-2 border-b border-emerald-700 max-w-xs mx-auto"></div>
       </div>
 
-      <!-- Spacer on small screens -->
-      <div class="my-6 lg:my-0"></div>
+      <div class="grid grid-cols-1 gap-8">
+        <article class="bg-white/5 backdrop-blur-md border border-white/10 p-6 rounded-xl shadow-xl hover:scale-[1.02] transition-transform animate-fade-in">
+          <h3 class="text-2xl font-semibold mb-2">Android GPX Tracker</h3>
+          <p class="text-gray-300 mb-4">
+            Android app to upload, store, and visualize hiking routes from GPX files. Tracks real-time paths with Google Maps and Firebase Firestore.
+          </p>
+          <ul class="text-sm text-gray-400 mb-4 list-disc list-inside space-y-1">
+            <li>Kotlin, Android Studio</li>
+            <li>Google Maps API & Firebase Firestore</li>
+            <li>GPX XML parsing & live tracking</li>
+          </ul>
+          <a href="https://github.com/DionysisTheodosis/MyRoutes" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-emerald-400 hover:text-emerald-600 font-semibold">
+            <i data-lucide="github" class="w-5 h-5 mr-1"></i> View on GitHub
+          </a>
+        </article>
 
-      <!-- Currently Working On Header -->
-      <div class="flex items-center flex-grow border-t border-emerald-700">
-        <h2 class="text-xl font-bold text-emerald-400 px-4 bg-gray-900">
-          Currently Working On
-        </h2>
-        <div class="flex-grow border-t border-emerald-700"></div>
+        <article class="bg-white/5 backdrop-blur-md border border-white/10 p-6 rounded-xl shadow-xl hover:scale-[1.02] transition-transform animate-fade-in">
+          <h3 class="text-2xl font-semibold mb-2">MedCare - Doctor Appointment Platform</h3>
+          <p class="text-gray-300 mb-4">
+            Full-stack web app for doctor appointments. Patients book, doctors manage schedules, admins oversee. Built with RESTful API and Docker containerization.
+          </p>
+          <a href="https://github.com/DionysisTheodosis/Web-Development-2024" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-emerald-400 hover:text-emerald-600 font-semibold">
+            <i data-lucide="github" class="w-5 h-5 mr-1"></i> View on GitHub
+          </a>
+        </article>
+
+        <article class="bg-white/5 backdrop-blur-md border border-white/10 p-6 rounded-xl shadow-xl hover:scale-[1.02] transition-transform animate-fade-in">
+          <h3 class="text-2xl font-semibold mb-2">Mobile Phones Management RESTful Service</h3>
+          <p class="text-gray-300 mb-4">
+            Backend RESTful API for managing mobile phones in an online store. Built with Spring Boot and JPA for full CRUD operations.
+          </p>
+          <a href="https://github.com/DionysisTheodosis/Cloud-Technologies-2025" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-emerald-400 hover:text-emerald-600 font-semibold">
+            <i data-lucide="github" class="w-5 h-5 mr-1"></i> View on GitHub
+          </a>
+        </article>
+
+        <article class="bg-white/5 backdrop-blur-md border border-white/10 p-6 rounded-xl shadow-xl hover:scale-[1.02] transition-transform animate-fade-in">
+          <h3 class="text-2xl font-semibold mb-2">Web Development Full CRUD (Car Repair)</h3>
+          <p class="text-gray-300 mb-4">
+            Full-stack web app for car repair management using Spring Boot backend and Vue.js frontend for complete CRUD functionality.
+          </p>
+          <a href="https://github.com/DionysisTheodosis/Web-Development-2025" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-emerald-400 hover:text-emerald-600 font-semibold">
+            <i data-lucide="github" class="w-5 h-5 mr-1"></i> View on GitHub
+          </a>
+        </article>
+
+        <article class="bg-white/5 backdrop-blur-md border border-white/10 p-6 rounded-xl shadow-xl hover:scale-[1.02] transition-transform animate-fade-in">
+          <h3 class="text-2xl font-semibold mb-2">Music Festival Management Backend</h3>
+          <p class="text-gray-300 mb-4">
+            Backend system for managing music festivals, performances, and users with RESTful web services and database integration.
+          </p>
+          <a href="https://github.com/DionysisTheodosis/Web-Development-2025" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-emerald-400 hover:text-emerald-600 font-semibold">
+            <i data-lucide="github" class="w-5 h-5 mr-1"></i> View on GitHub
+          </a>
+        </article>
+      </div>
+    </section>
+
+    <!-- Currently Working On Section -->
+    <section class="lg:flex-1 mt-16 lg:mt-0">
+      <div class="relative text-center mb-8">
+        <h2 class="text-2xl font-bold text-emerald-400">Currently Working On</h2>
+        <div class="mt-2 border-b border-emerald-700 max-w-xs mx-auto"></div>
       </div>
 
-    </div>
-  </div>
+      <div class="space-y-8">
+        <article class="bg-white/5 backdrop-blur-md border border-white/10 p-6 rounded-xl shadow-xl animate-fade-in">
+          <h3 class="text-2xl font-semibold mb-2">RESTful Mobile Phones Management Service</h3>
+          <p class="text-gray-300 mb-4">
+            Developing the backend REST API for mobile phones store management using Spring Boot and JPA with full CRUD.
+          </p>
+          <a href="https://github.com/DionysisTheodosis/Cloud-Technologies-2025" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-emerald-400 hover:text-emerald-600 font-semibold">
+            <i data-lucide="github" class="w-5 h-5 mr-1"></i> Repository
+          </a>
+        </article>
 
-  <!-- Projects Grid -->
-  <section class="grid grid-cols-1 sm:grid-cols-2 gap-8 max-w-4xl w-full px-6 mb-20">
+        <article class="bg-white/5 backdrop-blur-md border border-white/10 p-6 rounded-xl shadow-xl animate-fade-in">
+          <h3 class="text-2xl font-semibold mb-2">Full CRUD Car Repair Web Application</h3>
+          <p class="text-gray-300 mb-4">
+            Building a full CRUD app for car repair using Spring Boot backend and Vue.js frontend.
+          </p>
+          <a href="https://github.com/DionysisTheodosis/Web-Development-2025" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-emerald-400 hover:text-emerald-600 font-semibold">
+            <i data-lucide="github" class="w-5 h-5 mr-1"></i> Repository
+          </a>
+        </article>
 
-    <article class="bg-white/5 backdrop-blur-md border border-white/10 p-6 rounded-xl shadow-xl hover:scale-[1.02] transition-transform animate-fade-in">
-      <h3 class="text-2xl font-semibold mb-2">Android GPX Tracker</h3>
-      <p class="text-gray-300 mb-4">
-        Android app to upload, store, and visualize hiking routes from GPX files. Tracks real-time paths with Google Maps and Firebase Firestore.
-      </p>
-      <ul class="text-sm text-gray-400 mb-4 list-disc list-inside space-y-1">
-        <li>Kotlin, Android Studio</li>
-        <li>Google Maps API & Firebase Firestore</li>
-        <li>GPX XML parsing & live tracking</li>
-      </ul>
-      <a href="https://github.com/DionysisTheodosis/MyRoutes" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-emerald-400 hover:text-emerald-600 font-semibold">
-        <i data-lucide="github" class="w-5 h-5 mr-1"></i> View on GitHub
-      </a>
-    </article>
+        <article class="bg-white/5 backdrop-blur-md border border-white/10 p-6 rounded-xl shadow-xl animate-fade-in">
+          <h3 class="text-2xl font-semibold mb-2">Music Festival Management Backend</h3>
+          <p class="text-gray-300 mb-4">
+            Developing backend services for music festivals and performance scheduling.
+          </p>
+          <a href="https://github.com/DionysisTheodosis/Web-Development-2025" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-emerald-400 hover:text-emerald-600 font-semibold">
+            <i data-lucide="github" class="w-5 h-5 mr-1"></i> Repository
+          </a>
+        </article>
+      </div>
+    </section>
+  </main>
 
-    <article class="bg-white/5 backdrop-blur-md border border-white/10 p-6 rounded-xl shadow-xl hover:scale-[1.02] transition-transform animate-fade-in">
-      <h3 class="text-2xl font-semibold mb-2">MedCare - Doctor Appointment Platform</h3>
-      <p class="text-gray-300 mb-4">
-        Full-stack web app for doctor appointments. Patients book, doctors manage schedules, admins oversee. Built with RESTful API and Docker containerization.
-      </p>
-      <a href="https://github.com/DionysisTheodosis/Web-Development-2024" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-emerald-400 hover:text-emerald-600 font-semibold">
-        <i data-lucide="github" class="w-5 h-5 mr-1"></i> View on GitHub
-      </a>
-    </article>
-
-    <article class="bg-white/5 backdrop-blur-md border border-white/10 p-6 rounded-xl shadow-xl hover:scale-[1.02] transition-transform animate-fade-in">
-      <h3 class="text-2xl font-semibold mb-2">Mobile Phones Management RESTful Service</h3>
-      <p class="text-gray-300 mb-4">
-        Backend RESTful API for managing mobile phones in an online store. Built with Spring Boot and JPA for full CRUD operations.
-      </p>
-      <a href="https://github.com/DionysisTheodosis/Cloud-Technologies-2025" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-emerald-400 hover:text-emerald-600 font-semibold">
-        <i data-lucide="github" class="w-5 h-5 mr-1"></i> View on GitHub
-      </a>
-    </article>
-
-    <article class="bg-white/5 backdrop-blur-md border border-white/10 p-6 rounded-xl shadow-xl hover:scale-[1.02] transition-transform animate-fade-in">
-      <h3 class="text-2xl font-semibold mb-2">Web Development Full CRUD (Car Repair)</h3>
-      <p class="text-gray-300 mb-4">
-        Full-stack web app for car repair management using Spring Boot backend and Vue.js frontend for complete CRUD functionality.
-      </p>
-      <a href="https://github.com/DionysisTheodosis/Web-Development-2025" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-emerald-400 hover:text-emerald-600 font-semibold">
-        <i data-lucide="github" class="w-5 h-5 mr-1"></i> View on GitHub
-      </a>
-    </article>
-
-    <article class="bg-white/5 backdrop-blur-md border border-white/10 p-6 rounded-xl shadow-xl hover:scale-[1.02] transition-transform animate-fade-in">
-      <h3 class="text-2xl font-semibold mb-2">Music Festival Management Backend</h3>
-      <p class="text-gray-300 mb-4">
-        Backend system for managing music festivals, performances, and users with RESTful web services and database integration.
-      </p>
-      <a href="https://github.com/DionysisTheodosis/Web-Development-2025" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-emerald-400 hover:text-emerald-600 font-semibold">
-        <i data-lucide="github" class="w-5 h-5 mr-1"></i> View on GitHub
-      </a>
-    </article>
-
-  </section>
-
-  <!-- Currently Working On Cards -->
-  <section class="max-w-4xl w-full px-6 mb-20 space-y-10">
-
-    <article class="bg-white/5 backdrop-blur-md border border-white/10 p-6 rounded-xl shadow-xl hover:scale-[1.02] transition-transform animate-fade-in">
-      <h3 class="text-2xl font-semibold mb-2">Online Car Repair Shop Web App</h3>
-      <p class="text-gray-300 mb-4">
-        Building a full CRUD car repair workshop management app with Spring Boot backend and Vue.js frontend for appointment scheduling and customer management.
-      </p>
-      <a href="https://github.com/DionysisTheodosis/Car-Repair-Web-App" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-emerald-400 hover:text-emerald-600 font-semibold">
-        <i data-lucide="github" class="w-5 h-5 mr-1"></i> View on GitHub
-      </a>
-    </article>
-
-    <article class="bg-white/5 backdrop-blur-md border border-white/10 p-6 rounded-xl shadow-xl hover:scale-[1.02] transition-transform animate-fade-in">
-      <h3 class="text-2xl font-semibold mb-2">Mobile Phones Online Store API</h3>
-      <p class="text-gray-300 mb-4">
-        Developing RESTful service backend for mobile phones management including CRUD operations, built with Spring Boot and JPA.
-      </p>
-      <a href="https://github.com/DionysisTheodosis/Mobile-Phones-API" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-emerald-400 hover:text-emerald-600 font-semibold">
-        <i data-lucide="github" class="w-5 h-5 mr-1"></i> View on GitHub
-      </a>
-    </article>
-
-  </section>
-
-  <script>
-    // Initialize Lucide icons
-    lucide.createIcons();
-  </script>
+  <script>lucide.replace();</script>
 </body>
 </html>
