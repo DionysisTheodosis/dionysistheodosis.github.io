@@ -62,7 +62,7 @@
 				></textarea>
 				<button
 					id="load-json-editor"
-					class="bg-blue-500 hover:bg-blue-600 text-gray-900 font-semibold py-2 px-4 rounded-lg transition focus:outline-none focus:ring-4 focus:ring-blue-400"
+					undedlass="bg-blue-500 hover:bg-blue-600 text-gray-900 font-semibold py-2 px-4 rounded-lg transition focus:outline-none focus:ring-4 focus:ring-blue-400"
 				>
 					Load JSON from Editor
 				</button>
@@ -144,6 +144,24 @@
 			</div>
 		</main>
 
+		<div class="flex">
+			<!-- Sidebar -->
+			<aside
+				id="sidebar"
+				class="absolute top-16 left-4 z-40 w-64 bg-gray-800 text-gray-300 p-4 rounded-lg shadow-lg hidden"
+			>
+				<h2 class="text-xl font-bold text-cyan-400 mb-4">Lessons</h2>
+				<ul id="lesson-list" class="space-y-2">
+					<!-- Lessons and topics will be dynamically populated here -->
+				</ul>
+			</aside>
+
+			<!-- Main Content -->
+			<div id="main-content" class="flex-1">
+				<!-- Existing content here -->
+			</div>
+		</div>
+
 		<script>
 			let quizData = {};
 
@@ -202,7 +220,10 @@
 
 				selections[index] = [];
 
-				const labels = ["a)", "b)", "c)", "d)"];
+				const labels = Array.from(
+					{ length: q.answers.length },
+					(_, i) => `${String.fromCharCode(97 + i)})`
+				);
 				q.answers.forEach((answer, i) => {
 					const card = document.createElement("button");
 					card.type = "button";
@@ -496,6 +517,14 @@
 
 			// Initialize
 			function initializeQuiz() {
+				if (!quizData || !Array.isArray(quizData.questions)) {
+					console.error("Loaded quiz data:", quizData);
+					alert(
+						"Invalid quiz data. Please ensure the JSON file has a 'questions' array with valid content. Check the console for more details."
+					);
+					return;
+				}
+
 				if (quizData.lesson) {
 					lessonTitleEl.textContent = quizData.lesson;
 				}
@@ -521,7 +550,105 @@
 				initializeQuiz();
 			});
 
-			initializeQuiz();
+			// Add a toggle button for the sidebar
+			const sidebarToggleButton = document.createElement("button");
+			sidebarToggleButton.textContent = "☰ Lessons";
+			sidebarToggleButton.className = `
+    fixed top-4 left-4 z-50 bg-cyan-500 hover:bg-cyan-600 text-gray-900
+    font-semibold py-2 px-4 rounded-lg shadow-md transition
+    focus:outline-none focus:ring-4 focus:ring-cyan-400
+`;
+			sidebarToggleButton.addEventListener("click", () => {
+				const sidebar = document.getElementById("sidebar");
+				sidebar.classList.toggle("hidden");
+
+				// Load the sidebar content if it is being shown
+				if (!sidebar.classList.contains("hidden")) {
+					loadSidebar();
+				}
+			});
+			document.body.appendChild(sidebarToggleButton);
+
+			// Update the sidebar to make lessons collapsible
+			function loadSidebar() {
+				fetch("index.json")
+					.then((response) => {
+						if (!response.ok) {
+							throw new Error("Failed to load index.json");
+						}
+						return response.json();
+					})
+					.then((data) => {
+						const lessonList = document.getElementById("lesson-list");
+						lessonList.innerHTML = "";
+
+						data.lessons.forEach((lesson) => {
+							const lessonItem = document.createElement("li");
+							lessonItem.className = "bg-gray-700 p-3 rounded-lg";
+
+							const lessonHeader = document.createElement("div");
+							lessonHeader.className = `
+                    flex justify-between items-center cursor-pointer
+                    hover:bg-cyan-500 hover:text-gray-900 p-2 rounded-lg
+                `;
+							lessonHeader.textContent = lesson.name;
+
+							const topicList = document.createElement("ul");
+							topicList.className = "pl-4 mt-2 space-y-1 hidden";
+
+							lesson.topics.forEach((topic) => {
+								const topicItem = document.createElement("li");
+								topicItem.className = `
+                        bg-gray-600 p-2 rounded-lg cursor-pointer
+                        hover:bg-cyan-500 hover:text-gray-900
+                    `;
+								topicItem.textContent = topic.name;
+
+								topicItem.addEventListener("click", async () => {
+									try {
+										const resolvedPath = topic.path;
+										console.log(`Fetching quiz data from: ${resolvedPath}`);
+
+										const response = await fetch(resolvedPath);
+										if (!response.ok) {
+											throw new Error(`Failed to load ${resolvedPath}`);
+										}
+										quizData = await response.json();
+										console.log("Loaded quizData:", quizData);
+
+										// Automatically initialize and start the quiz
+										document
+											.getElementById("landing-page")
+											.classList.add("hidden");
+										document
+											.getElementById("quiz-container")
+											.classList.remove("hidden");
+										initializeQuiz();
+										sidebar.classList.toggle("hidden");
+									} catch (error) {
+										alert(`Error: ${error.message}`);
+									}
+								});
+
+								topicList.appendChild(topicItem);
+							});
+
+							lessonHeader.addEventListener("click", () => {
+								topicList.classList.toggle("hidden");
+							});
+
+							lessonItem.appendChild(lessonHeader);
+							lessonItem.appendChild(topicList);
+							lessonList.appendChild(lessonItem);
+						});
+
+						document.getElementById("sidebar").classList.remove("hidden");
+						document.getElementById("main-content").classList.add("hidden");
+					})
+					.catch((error) => {
+						alert(`Error loading sidebar: ${error.message}`);
+					});
+			}
 		</script>
 	</body>
 </html>

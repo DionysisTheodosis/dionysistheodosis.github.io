@@ -1,0 +1,69 @@
+{
+	"lessons": [
+		{
+			"name": "Ασφάλεια Πληροφοριακών & Επικοινωνιακών Συστημάτων",
+			"topics": [
+				{
+					"name": "Εισαγωγή και Εννοιολογικό Πλαίσιο",
+					"path": "lessons/asfaleia/lesson_1.json"
+				},
+				{
+					"name": "Metasploit",
+					"path": "lessons/asfaleia/lesson_2.json"
+				},
+				{
+					"name": "Nmap: Σάρωση του Διαδικτύου",
+					"path": "lessons/asfaleia/lesson_3.json"
+				},
+				{
+					"name": "Ανίχνευση Ευπαθειών - Vulnerability Scanning",
+					"path": "lessons/asfaleia/lesson_4.json"
+				},
+				{
+					"name": "Nmap: Σάρωση του Διαδικτύου",
+					"path": "lessons/asfaleia/lesson_5.json"
+				},
+				{
+					"name": "Εισαγωγή στους Ελέγχους Διείσδυσης - Penetration Testing",
+					"path": "lessons/asfaleia/lesson_6.json"
+				},
+				{
+					"name": "Social Engineering",
+					"path": "lessons/asfaleia/lesson_7.json"
+				},
+				{
+					"name": "Ιομορφικό Λογισμικό (Malware)",
+					"path": "lessons/asfaleia/lesson_8.json"
+				},
+				{
+					"name": "Κρυπτογραφία Δημοσίου Κλειδιού",
+					"path": "lessons/asfaleia/lesson_9.json"
+				},
+				{
+					"name": "Εισαγωγή στην Κρυπτογραφία",
+					"path": "lessons/asfaleia/lesson_10.json"
+				},
+				{
+					"name": "Ταυτοποίηση, Αυθεντικοποίηση & Έλεγχος Προσπέλασης",
+					"path": "lessons/asfaleia/lesson_11.json"
+				},
+				{
+					"name": "Πρότυπα διαχείρισης ασφάλειας πληροφοριών II ISO/IEC 27002:2013",
+					"path": "lessons/asfaleia/lesson_12.json"
+				},
+				{
+					"name": "Πολιτικές Ασφάλειας Πληροφοριών",
+					"path": "lessons/asfaleia/lesson_13.json"
+				},
+				{
+					"name": "Ανάλυση και Διαχείριση Επικινδυνότητας βάσει Προτύπων",
+					"path": "lessons/asfaleia/lesson_14.json"
+				},
+				{
+					"name": "Βάσεις Ανάλυσης και Διοίκησης Επικινδυνότητας",
+					"path": "lessons/asfaleia/lesson_15.json"
+				}
+			]
+		}
+	]
+}

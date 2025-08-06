@@ -1,0 +1,116 @@
+{
+	"lesson": "Ασφάλεια Πληροφοριακών & Επικοινωνιακών Συστημάτων",
+	"topic": "Metasploit",
+	"questions": [
+		{
+			"question": "Τι είναι το Metasploit Framework (MF);",
+			"answers": [
+				{
+					"text": "Μια κλειστού κώδικα πλατφόρμα για την ανάπτυξη λογισμικού.",
+					"isCorrect": false
+				},
+				{
+					"text": "Μια προηγμένη open-source πλατφόρμα για την ανάπτυξη, δοκιμή και χρήση κώδικα εκμετάλλευσης (exploit code), επεκτάσιμη μέσω payloads, encoders και άλλων στοιχείων.",
+					"isCorrect": true
+				},
+				{
+					"text": "Ένα εργαλείο για την παρακολούθηση δικτύων.",
+					"isCorrect": false
+				},
+				{
+					"text": "Ένα σύστημα διαχείρισης ευπαθειών.",
+					"isCorrect": false
+				}
+			],
+			"multiSelect": false
+		},
+		{
+			"question": "Ποια είναι η διαφορά μεταξύ ενός 'Exploit' και ενός 'Payload' στο Metasploit;",
+			"answers": [
+				{
+					"text": "Ένα Exploit είναι ο κώδικας που εκτελείται από το σύστημα, ενώ ένα Payload είναι το μέσο εκμετάλλευσης.",
+					"isCorrect": false
+				},
+				{
+					"text": "Ένα Exploit είναι το μέσο με το οποίο ένας εισβολέας/pentester εκμεταλλεύεται ένα ελάττωμα σε ένα σύστημα (π.χ. buffer overflow), ενώ ένα Payload είναι ο κώδικας που θέλουμε να εκτελέσει το σύστημα κατά την εκμετάλλευση ευπάθειας.",
+					"isCorrect": true
+				},
+				{
+					"text": "Και οι δύο όροι αναφέρονται στο ίδιο πράγμα.",
+					"isCorrect": false
+				},
+				{
+					"text": "Ένα Exploit είναι μόνο για Windows, ενώ ένα Payload είναι για Linux.",
+					"isCorrect": false
+				}
+			],
+			"multiSelect": false
+		},
+		{
+			"question": "Ποια είναι τα βασικά βήματα που ακολουθούνται σε κάθε προσπάθεια εκμετάλλευσης (exploitation attempt) στην κονσόλα του Metasploit (msfconsole);",
+			"answers": [
+				{
+					"text": "Μόνο η επιλογή του Exploit.",
+					"isCorrect": false
+				},
+				{
+					"text": "Επιλογή Exploit (Exploit Selection), Επιλογή Payload (Payload Selection), Παραμετροποίηση (Parameterization), Εκτέλεση (Exploit).",
+					"isCorrect": true
+				},
+				{
+					"text": "Ανάλυση αρχείων καταγραφής, ενημέρωση antivirus, επανεκκίνηση συστήματος.",
+					"isCorrect": false
+				},
+				{
+					"text": "Συλλογή πληροφοριών, ανίχνευση ευπαθειών, καθαρισμός.",
+					"isCorrect": false
+				}
+			],
+			"multiSelect": false
+		},
+		{
+			"question": "Τι είναι το MSFvenom και τι αντικατέστησε;",
+			"answers": [
+				{
+					"text": "Ένα εργαλείο για την ανίχνευση ευπαθειών.",
+					"isCorrect": false
+				},
+				{
+					"text": "Ένας συνδυασμός από Payload Generation και Encoding, που αντικατέστησε το msfpayload και το msfencode το 2015.",
+					"isCorrect": true
+				},
+				{
+					"text": "Ένα γραφικό περιβάλλον χρήστη για το Metasploit.",
+					"isCorrect": false
+				},
+				{
+					"text": "Ένα εργαλείο για την ανάλυση κακόβουλου λογισμικού.",
+					"isCorrect": false
+				}
+			],
+			"multiSelect": false
+		},
+		{
+			"question": "Τι είναι το VirusTotal και ποια είναι η χρησιμότητά του;",
+			"answers": [
+				{
+					"text": "Μια υπηρεσία που αναλύει μόνο αρχεία κειμένου.",
+					"isCorrect": false
+				},
+				{
+					"text": "Μια δωρεάν υπηρεσία που αναλύει ύποπτα αρχεία και URLs, διευκολύνοντας τη γρήγορη ανίχνευση ιών, worms, trojans και όλων των ειδών malware, υποστηρίζοντας 54 λογισμικά Antivirus.",
+					"isCorrect": true
+				},
+				{
+					"text": "Ένα εργαλείο για την κρυπτογράφηση αρχείων.",
+					"isCorrect": false
+				},
+				{
+					"text": "Μια πλατφόρμα για την ενοικίαση botnets.",
+					"isCorrect": false
+				}
+			],
+			"multiSelect": false
+		}
+	]
+}

@@ -1,0 +1,150 @@
+{
+	"lesson": "Ασφάλεια Πληροφοριακών & Επικοινωνιακών Συστημάτων",
+	"topic": "Ιομορφικό Λογισμικό (Malware)",
+	"questions": [
+		{
+			"question": "Ποιο malware θεωρείται το 'πρώτο κυβερνόπλο' και γιατί;",
+			"answers": [
+				{
+					"text": "Το WannaCry, λόγω της παγκόσμιας διασποράς του.",
+					"isCorrect": false
+				},
+				{
+					"text": "Ο Stuxnet, επειδή σχεδιάστηκε για να προκαλεί ζημιά όχι μόνο στον ψηφιακό, αλλά και στον πραγματικό κόσμο, στοχεύοντας βιομηχανικά συστήματα ελέγχου (PLC).",
+					"isCorrect": true
+				},
+				{
+					"text": "Ο BlackEnergy, επειδή ήταν το πρώτο trojan DDoS.",
+					"isCorrect": false
+				},
+				{
+					"text": "Το Mirai, επειδή στόχευσε συσκευές IoT.",
+					"isCorrect": false
+				}
+			],
+			"multiSelect": false
+		},
+		{
+			"question": "Ποια είναι μερικά από τα βασικά χαρακτηριστικά του ιού Stuxnet;",
+			"answers": [
+				{
+					"text": "Είναι Advanced Persistent Threat (APT).",
+					"isCorrect": true
+				},
+				{
+					"text": "Ήταν 500 KB σε μέγεθος.",
+					"isCorrect": true
+				},
+				{
+					"text": "Είχε 5 zero-day vulnerabilities.",
+					"isCorrect": true
+				},
+				{
+					"text": "Αλλοίωσε 2 ψηφιακά πιστοποιητικά.",
+					"isCorrect": true
+				},
+				{
+					"text": "Ενήργησε σαν rootkit.",
+					"isCorrect": true
+				},
+				{
+					"text": "Ήταν ο πρώτος ιός που επιτέθηκε σε συστήματα SCADA.",
+					"isCorrect": true
+				},
+				{
+					"text": "Χρησιμοποιούσε μόνο Telnet ports για μόλυνση.",
+					"isCorrect": false
+				}
+			],
+			"multiSelect": true
+		},
+		{
+			"question": "Ποιο κενό ασφαλείας των Windows εκμεταλλεύτηκε ο ιός WannaCry για την αυτοδιάθεσή του;",
+			"answers": [
+				{
+					"text": "Buffer Overflow.",
+					"isCorrect": false
+				},
+				{
+					"text": "SQL Injection.",
+					"isCorrect": false
+				},
+				{
+					"text": "EternalBlue, το οποίο του επέτρεψε να χρησιμοποιήσει δυνατότητες τύπου worm μέσω ευάλωτων θυρών SMB (port 445).",
+					"isCorrect": true
+				},
+				{
+					"text": "Cross-Site Scripting (XSS).",
+					"isCorrect": false
+				}
+			],
+			"multiSelect": false
+		},
+		{
+			"question": "Ποια είναι τα συνιστώμενα μέτρα προστασίας από τον ιό WannaCry;",
+			"answers": [
+				{
+					"text": "Εγκατάσταση patches στα Windows συστήματα (Microsoft Security Bulletin MS17-010 και patch για μη υποστηριζόμενες εκδόσεις).",
+					"isCorrect": true
+				},
+				{
+					"text": "Τακτικό backup σε Critical Data.",
+					"isCorrect": true
+				},
+				{
+					"text": "Κλείσιμο της χρήσης των θυρών SMB ports (UDP 137, 138 και TCP 139, 445) ή απενεργοποίηση SMBv1.",
+					"isCorrect": true
+				},
+				{
+					"text": "Μόνο η χρήση antivirus λογισμικού.",
+					"isCorrect": false
+				}
+			],
+			"multiSelect": true
+		},
+		{
+			"question": "Τι είναι το Mirai Botnet Malware και ποιος είναι ο βασικός του στόχος;",
+			"answers": [
+				{
+					"text": "Ένα λογισμικό που κρυπτογραφεί αρχεία και ζητά λύτρα.",
+					"isCorrect": false
+				},
+				{
+					"text": "Ένα είδος κακόβουλου λογισμικού που στοχεύει σε συνδεμένες συσκευές με το Διαδίκτυο (IoT), μολύνοντας τες και μετατρέποντάς τις σε δίκτυο bots για επιθέσεις DDoS.",
+					"isCorrect": true
+				},
+				{
+					"text": "Ένα trojan που στοχεύει τραπεζικές υπηρεσίες.",
+					"isCorrect": false
+				},
+				{
+					"text": "Ένας ιός που προκαλεί φυσικές ζημιές σε βιομηχανικά συστήματα.",
+					"isCorrect": false
+				}
+			],
+			"multiSelect": false
+		},
+		{
+			"question": "Πώς προστατεύεται κανείς από το Mirai Botnet Malware;",
+			"answers": [
+				{
+					"text": "Δεν αφήνοντας στις IoT συσκευές το default username και password, χρησιμοποιώντας ισχυρά passwords, προσέχοντας τα spam mails, και κάνοντας ενημερώσεις firmware και software.",
+					"isCorrect": true
+				},
+				{
+					"text": "Κλείνοντας όλες τις θύρες στον router.",
+					"isCorrect": false
+				},
+				{
+					"text": "Αποσυνδέοντας όλες τις IoT συσκευές από το διαδίκτυο.",
+					"isCorrect": false
+				},
+				{
+					"text": "Εγκαθιστώντας αποκλειστικά antivirus λογισμικό.",
+					"isCorrect": false
+				}
+			],
+			"multiSelect": true
+		}
+	]
+}
