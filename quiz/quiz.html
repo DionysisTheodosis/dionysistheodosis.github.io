@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>Tailwind Dark Quiz with Per-Question Timing & Total Time</title>
+		<script src="https://cdn.tailwindcss.com"></script>
+		<link
+			rel="stylesheet"
+			href="https://cdn.jsdelivr.net/npm/primeicons/primeicons.css"
+		/>
+		<style>
+			::-webkit-scrollbar {
+				width: 8px;
+				height: 8px;
+			}
+			::-webkit-scrollbar-track {
+				background: #1e1e1e;
+			}
+			::-webkit-scrollbar-thumb {
+				background-color: #4fc3f7;
+				border-radius: 4px;
+			}
+
+			#restart-btn {
+				position: absolute;
+				top: 1rem;
+				left: 1rem;
+			}
+		</style>
+	</head>
+	<body class="bg-gray-900 flex items-center justify-center min-h-screen p-4">
+		<div id="landing-page" class="flex flex-col items-center space-y-6">
+			<h1 class="text-4xl font-extrabold text-cyan-400 tracking-widest">
+				Welcome to the Quiz
+			</h1>
+			<p class="text-gray-300 text-center">
+				Click the button below to copy the JSON skeleton for the quiz. Fill it
+				with your questions and upload it to start the quiz.
+			</p>
+			<button
+				id="copy-json-btn"
+				class="bg-cyan-500 hover:bg-cyan-600 text-gray-900 font-semibold py-3 px-6 rounded-lg transition focus:outline-none focus:ring-4 focus:ring-cyan-400"
+			>
+				Copy JSON Skeleton
+			</button>
+			<input
+				type="file"
+				id="upload-json"
+				accept="application/json"
+				class="bg-gray-700 text-gray-300 p-2 rounded-lg font-semibold shadow-md hover:bg-cyan-500 hover:text-gray-900 focus:outline-none focus:ring-4 focus:ring-cyan-400 transition"
+			/>
+			<div class="flex flex-col items-center space-y-4">
+				<label for="json-editor" class="text-gray-300"
+					>Or paste your JSON below:</label
+				>
+				<textarea
+					id="json-editor"
+					rows="10"
+					class="w-full bg-gray-800 text-gray-300 p-4 rounded-lg font-mono shadow-md focus:outline-none focus:ring-4 focus:ring-cyan-400"
+					placeholder="Paste your JSON here..."
+				></textarea>
+				<button
+					id="load-json-editor"
+					undedlass="bg-blue-500 hover:bg-blue-600 text-gray-900 font-semibold py-2 px-4 rounded-lg transition focus:outline-none focus:ring-4 focus:ring-blue-400"
+				>
+					Load JSON from Editor
+				</button>
+			</div>
+			<button
+				id="start-quiz-btn"
+				class="bg-green-500 hover:bg-green-600 text-gray-900 font-semibold py-3 px-6 rounded-lg transition focus:outline-none focus:ring-4 focus:ring-green-400 disabled:opacity-50 disabled:cursor-not-allowed"
+				disabled
+			>
+				Start Quiz
+			</button>
+		</div>
+
+		<main
+			id="quiz-container"
+			class="hidden bg-gray-800 rounded-xl shadow-lg max-w-xl w-full p-8 relative flex flex-col space-y-6"
+		>
+			<!-- Top bar row: question count + timer + restart button -->
+			<div
+				id="top-bar"
+				class="flex justify-end space-x-4 items-center text-gray-400 font-mono text-sm select-none"
+			>
+				<div id="q-counter">1 / 1</div>
+				<div
+					id="timer"
+					class="bg-gray-700 px-3 rounded-lg text-pink-400 font-semibold tracking-widest"
+				>
+					00:00
+				</div>
+				<button
+					id="restart-btn"
+					title="Restart Quiz"
+					class="hidden bg-cyan-600 hover:bg-cyan-700 text-white w-12 h-12 flex items-center justify-center rounded-full transition focus:outline-none focus:ring-2 focus:ring-cyan-400"
+					aria-label="Restart Quiz"
+				>
+					<i class="pi pi-refresh text-xl"></i>
+				</button>
+			</div>
+
+			<!-- Title row: centered lesson title -->
+			<h1
+				class="text-center text-3xl font-extrabold text-cyan-400 tracking-widest"
+				id="lesson-title"
+			>
+				Lesson Title
+			</h1>
+			<!-- Question Text -->
+			<h2
+				id="question-text"
+				class="text-gray-200 text-xl font-semibold text-center min-h-[4rem] mb-10 px-4"
+			></h2>
+
+			<!-- Answers Grid -->
+			<div id="answers" class="grid grid-cols-1 sm:grid-cols-2 gap-6"></div>
+
+			<!-- Next Button -->
+			<button
+				id="next-btn"
+				class="mt-12 bg-cyan-500 hover:bg-cyan-600 text-gray-900 font-semibold py-3 rounded-lg disabled:opacity-50 disabled:cursor-not-allowed transition"
+			>
+				Next
+			</button>
+
+			<!-- Score Display -->
+			<div
+				id="score-container"
+				class="mt-14 text-center text-4xl font-bold text-pink-400 hidden"
+			></div>
+
+			<!-- Summary Review Container -->
+			<div
+				id="summary-container"
+				class="hidden mt-10 max-h-[60vh] overflow-y-auto"
+			>
+				<h2 class="text-center text-cyan-400 text-2xl font-bold mb-8">
+					Review Your Answers
+				</h2>
+				<div id="summary-list" class="space-y-6"></div>
+			</div>
+		</main>
+
+		<div class="flex">
+			<!-- Sidebar -->
+			<aside
+				id="sidebar"
+				class="absolute top-16 left-4 z-40 w-64 bg-gray-800 text-gray-300 p-4 rounded-lg shadow-lg hidden"
+			>
+				<h2 class="text-xl font-bold text-cyan-400 mb-4">Lessons</h2>
+				<ul id="lesson-list" class="space-y-2">
+					<!-- Lessons and topics will be dynamically populated here -->
+				</ul>
+			</aside>
+
+			<!-- Main Content -->
+			<div id="main-content" class="flex-1">
+				<!-- Existing content here -->
+			</div>
+		</div>
+
+		<script>
+			let quizData = {};
+
+			// Elements
+			const lessonTitleEl = document.getElementById("lesson-title");
+			const questionTextEl = document.getElementById("question-text");
+			const answersEl = document.getElementById("answers");
+			const nextBtn = document.getElementById("next-btn");
+			const qCounterEl = document.getElementById("q-counter");
+			const timerEl = document.getElementById("timer");
+			const scoreContainer = document.getElementById("score-container");
+			const summaryContainer = document.getElementById("summary-container");
+			const summaryList = document.getElementById("summary-list");
+			const topBar = document.getElementById("top-bar");
+			const restartBtn = document.getElementById("restart-btn");
+
+			let currentIndex = 0;
+			let selections = [];
+			let questionTimes = []; // store time per question (seconds)
+			let questionStartTime = 0;
+			let timerInterval;
+
+			function startTimer() {
+				questionStartTime = Date.now();
+				timerEl.textContent = "00:00";
+				clearInterval(timerInterval);
+				timerInterval = setInterval(() => {
+					const elapsed = Math.floor((Date.now() - questionStartTime) / 1000);
+					const mins = Math.floor(elapsed / 60)
+						.toString()
+						.padStart(2, "0");
+					const secs = (elapsed % 60).toString().padStart(2, "0");
+					timerEl.textContent = `${mins}:${secs}`;
+				}, 250);
+			}
+
+			function stopTimer() {
+				clearInterval(timerInterval);
+				const elapsedSeconds = Math.floor(
+					(Date.now() - questionStartTime) / 1000
+				);
+				return elapsedSeconds;
+			}
+
+			function loadQuestion(index) {
+				startTimer();
+				const q = quizData.questions[index];
+				qCounterEl.textContent = `${index + 1} / ${quizData.questions.length}`;
+				questionTextEl.textContent = q.question;
+				answersEl.innerHTML = "";
+
+				// Show restart button after the first question is answered
+				if (index > 0) {
+					restartBtn.classList.remove("hidden");
+				}
+
+				selections[index] = [];
+
+				const labels = Array.from(
+					{ length: q.answers.length },
+					(_, i) => `${String.fromCharCode(97 + i)})`
+				);
+				q.answers.forEach((answer, i) => {
+					const card = document.createElement("button");
+					card.type = "button";
+					card.className = `
+			bg-gray-700 text-gray-300 p-5 rounded-xl font-semibold shadow-md
+			hover:bg-cyan-500 hover:text-gray-900
+			focus:outline-none focus:ring-4 focus:ring-cyan-400
+			transition
+			${selections[index].includes(i) ? "bg-pink-500 text-white shadow-pink-600" : ""}
+		`;
+					card.textContent = `${labels[i]} ${answer.text}`;
+					card.addEventListener("click", () => {
+						if (q.multiSelect) {
+							if (selections[index].includes(i)) {
+								selections[index] = selections[index].filter((x) => x !== i);
+								card.classList.remove(
+									"bg-pink-500",
+									"text-white",
+									"shadow-pink-600"
+								);
+								card.classList.add("bg-gray-700", "text-gray-300");
+							} else {
+								selections[index].push(i);
+								card.classList.add(
+									"bg-pink-500",
+									"text-white",
+									"shadow-pink-600"
+								);
+								card.classList.remove("bg-gray-700", "text-gray-300");
+							}
+						} else {
+							selections[index] = [i];
+							[...answersEl.children].forEach((btn, idx) => {
+								btn.classList.toggle("bg-pink-500", idx === i);
+								btn.classList.toggle("text-white", idx === i);
+								btn.classList.toggle("shadow-pink-600", idx === i);
+								btn.classList.toggle("bg-gray-700", idx !== i);
+								btn.classList.toggle("text-gray-300", idx !== i);
+							});
+						}
+					});
+					answersEl.appendChild(card);
+				});
+
+				// Show/hide next button text
+				nextBtn.textContent =
+					currentIndex < quizData.questions.length - 1 ? "Next" : "Finish";
+				nextBtn.disabled = true;
+
+				// Enable next button only when at least one selection for this question
+				answersEl.addEventListener(
+					"click",
+					() => {
+						nextBtn.disabled = selections[currentIndex].length === 0;
+					},
+					{ once: false }
+				);
+			}
+
+			function calculateScore() {
+				let score = 0;
+				quizData.questions.forEach((q, i) => {
+					const selected = selections[i] || [];
+					const correctIndexes = q.answers.reduce(
+						(acc, a, idx) => (a.isCorrect ? acc.concat(idx) : acc),
+						[]
+					);
+					if (
+						selected.length === correctIndexes.length &&
+						selected.every((idx) => q.answers[idx].isCorrect)
+					)
+						score++;
+				});
+				return score;
+			}
+
+			function formatTime(seconds) {
+				const m = Math.floor(seconds / 60)
+					.toString()
+					.padStart(2, "0");
+				const s = (seconds % 60).toString().padStart(2, "0");
+				return `${m}:${s}`;
+			}
+
+			function showSummary() {
+				questionTextEl.style.display = "none";
+				answersEl.style.display = "none";
+				nextBtn.style.display = "none";
+
+				const score = calculateScore();
+				const totalTime = questionTimes.reduce((a, b) => a + b, 0);
+
+				// Show score
+				const scoreContainer = document.getElementById("score-container");
+				scoreContainer.textContent = `Your Score: ${score} / ${quizData.questions.length}`;
+				scoreContainer.classList.remove("hidden");
+
+				// Show total time in top bar
+				const timerEl = document.getElementById("timer");
+				timerEl.textContent = `Total: ${formatTime(totalTime)}`;
+
+				// Show restart button
+				const restartBtn = document.getElementById("restart-btn");
+				restartBtn.classList.remove("hidden");
+
+				// Show summary container
+				const summaryContainer = document.getElementById("summary-container");
+				const summaryList = document.getElementById("summary-list");
+				summaryContainer.classList.remove("hidden");
+				summaryList.innerHTML = "";
+
+				quizData.questions.forEach((q, i) => {
+					const questionDiv = document.createElement("div");
+					questionDiv.className =
+						"border border-cyan-600 rounded-lg overflow-hidden";
+
+					const titleBar = document.createElement("button");
+					titleBar.type = "button";
+					titleBar.className =
+						"w-full bg-cyan-700 text-cyan-100 px-4 py-3 flex justify-between items-center font-semibold hover:bg-cyan-600 focus:outline-none focus:ring-2 focus:ring-cyan-400 transition";
+
+					// Determine if the user's answers for this question are fully correct
+					const selectedIndexes = new Set(selections[i] || []);
+					const correctIndexes = q.answers
+						.map((a, idx) => (a.isCorrect ? idx : -1))
+						.filter((idx) => idx !== -1);
+
+					// Check if selected answers exactly match correct answers
+					const isCorrect =
+						selectedIndexes.size === correctIndexes.length &&
+						[...selectedIndexes].every((idx) => correctIndexes.includes(idx));
+
+					// Status icon (tick or cross) for the title bar
+					const statusIcon = document.createElement("span");
+					statusIcon.textContent = isCorrect ? "✔️" : "❌";
+					statusIcon.className = "mr-2 flex-shrink-0";
+
+					// Left side container: icon + question text
+					const leftSpan = document.createElement("span");
+					leftSpan.textContent = `Q${i + 1}: ${q.question}`;
+
+					const leftContainer = document.createElement("span");
+					leftContainer.className = "flex items-center";
+					leftContainer.appendChild(statusIcon);
+					leftContainer.appendChild(leftSpan);
+
+					// Right side: Time + dropdown icon
+					const timeSpan = document.createElement("span");
+					timeSpan.className =
+						"text-cyan-300 text-sm font-mono whitespace-nowrap";
+					timeSpan.textContent = `Time: ${formatTime(questionTimes[i] || 0)}`;
+
+					const icon = document.createElement("span");
+					icon.innerHTML = "&#x25BC;"; // ▼ arrow
+					icon.className = "ml-3 text-xl transition-transform duration-300";
+
+					const rightContainer = document.createElement("span");
+					rightContainer.className = "flex items-center space-x-2";
+					rightContainer.appendChild(timeSpan);
+					rightContainer.appendChild(icon);
+
+					titleBar.appendChild(leftContainer);
+					titleBar.appendChild(rightContainer);
+
+					const answerList = document.createElement("ul");
+					answerList.className =
+						"bg-gray-800 text-gray-300 px-6 py-4 space-y-2 hidden";
+
+					q.answers.forEach((a, idx) => {
+						const li = document.createElement("li");
+						li.className = "p-3 rounded-lg";
+
+						if (a.isCorrect && selectedIndexes.has(idx)) {
+							li.classList.add(
+								"bg-green-700",
+								"text-green-300",
+								"font-semibold"
+							);
+							li.textContent = `✔️ ${a.text}`;
+						} else if (a.isCorrect && !selectedIndexes.has(idx)) {
+							li.classList.add("bg-green-900", "text-green-200", "italic");
+							li.textContent = `✔️ ${a.text} (Correct answer)`;
+						} else if (!a.isCorrect && selectedIndexes.has(idx)) {
+							li.classList.add("bg-red-700", "text-red-300", "line-through");
+							li.textContent = `❌ ${a.text} (Your answer - Incorrect)`;
+						} else {
+							li.classList.add("bg-gray-700", "text-gray-400");
+							li.textContent = a.text;
+						}
+
+						answerList.appendChild(li);
+					});
+
+					titleBar.addEventListener("click", () => {
+						const isHidden = answerList.classList.contains("hidden");
+						answerList.classList.toggle("hidden");
+						icon.style.transform = isHidden ? "rotate(180deg)" : "rotate(0deg)";
+					});
+
+					questionDiv.appendChild(titleBar);
+					questionDiv.appendChild(answerList);
+					summaryList.appendChild(questionDiv);
+				});
+			}
+
+			nextBtn.addEventListener("click", () => {
+				// Stop timer and save time for this question
+				const timeSpent = stopTimer();
+				questionTimes[currentIndex] = timeSpent;
+
+				if (currentIndex < quizData.questions.length - 1) {
+					currentIndex++;
+					loadQuestion(currentIndex);
+				} else {
+					showSummary();
+				}
+			});
+
+			const jsonSkeleton = {
+				lesson: "Lesson Title",
+				topic: "Topic",
+				questions: [
+					{
+						question: "Sample question?",
+						answers: [
+							{ text: "Answer 1", isCorrect: true },
+							{ text: "Answer 2", isCorrect: false },
+						],
+						multiSelect: false,
+					},
+				],
+			};
+
+			const copyJsonBtn = document.getElementById("copy-json-btn");
+			const uploadInput = document.getElementById("upload-json");
+			const startQuizBtn = document.getElementById("start-quiz-btn");
+			const landingPage = document.getElementById("landing-page");
+			const quizContainer = document.getElementById("quiz-container");
+			const jsonEditor = document.getElementById("json-editor");
+			const loadJsonEditorBtn = document.getElementById("load-json-editor");
+
+			copyJsonBtn.addEventListener("click", () => {
+				navigator.clipboard.writeText(JSON.stringify(jsonSkeleton, null, 2));
+				alert("JSON skeleton copied to clipboard!");
+			});
+
+			uploadInput.addEventListener("change", (event) => {
+				const file = event.target.files[0];
+				if (file) {
+					const reader = new FileReader();
+					reader.onload = (e) => {
+						try {
+							const uploadedQuizData = JSON.parse(e.target.result);
+							if (
+								uploadedQuizData.questions &&
+								Array.isArray(uploadedQuizData.questions)
+							) {
+								quizData = uploadedQuizData;
+								startQuizBtn.disabled = false;
+							} else {
+								alert("Invalid quiz JSON format.");
+							}
+						} catch (error) {
+							alert("Error parsing JSON file.");
+						}
+					};
+					reader.readAsText(file);
+				}
+			});
+
+			loadJsonEditorBtn.addEventListener("click", () => {
+				try {
+					const parsedJson = JSON.parse(jsonEditor.value);
+					if (parsedJson.questions && Array.isArray(parsedJson.questions)) {
+						quizData = parsedJson;
+						startQuizBtn.disabled = false;
+						alert("JSON loaded successfully from editor!");
+					} else {
+						alert("Invalid quiz JSON format.");
+					}
+				} catch (error) {
+					alert("Error parsing JSON from editor.");
+				}
+			});
+
+			startQuizBtn.addEventListener("click", () => {
+				landingPage.classList.add("hidden");
+				quizContainer.classList.remove("hidden");
+				initializeQuiz();
+			});
+
+			// Initialize
+			function initializeQuiz() {
+				if (!quizData || !Array.isArray(quizData.questions)) {
+					console.error("Loaded quiz data:", quizData);
+					alert(
+						"Invalid quiz data. Please ensure the JSON file has a 'questions' array with valid content. Check the console for more details."
+					);
+					return;
+				}
+
+				if (quizData.lesson) {
+					lessonTitleEl.textContent = quizData.lesson;
+				}
+				loadQuestion(currentIndex);
+			}
+
+			restartBtn.addEventListener("click", () => {
+				// Reset all
+				currentIndex = 0;
+				selections = [];
+				questionTimes = [];
+				scoreContainer.classList.add("hidden");
+				summaryContainer.classList.add("hidden");
+				restartBtn.classList.add("hidden");
+
+				questionTextEl.style.display = "";
+				answersEl.style.display = "";
+				nextBtn.style.display = "";
+
+				// Reset top bar timer text
+				timerEl.textContent = "00:00";
+
+				initializeQuiz();
+			});
+
+			// Add a toggle button for the sidebar
+			const sidebarToggleButton = document.createElement("button");
+			sidebarToggleButton.textContent = "☰ Lessons";
+			sidebarToggleButton.className = `
+    fixed top-4 left-4 z-50 bg-cyan-500 hover:bg-cyan-600 text-gray-900
+    font-semibold py-2 px-4 rounded-lg shadow-md transition
+    focus:outline-none focus:ring-4 focus:ring-cyan-400
+`;
+			sidebarToggleButton.addEventListener("click", () => {
+				const sidebar = document.getElementById("sidebar");
+				sidebar.classList.toggle("hidden");
+
+				// Load the sidebar content if it is being shown
+				if (!sidebar.classList.contains("hidden")) {
+					loadSidebar();
+				}
+			});
+			document.body.appendChild(sidebarToggleButton);
+
+			// Update the sidebar to make lessons collapsible
+			function loadSidebar() {
+				fetch("index.json")
+					.then((response) => {
+						if (!response.ok) {
+							throw new Error("Failed to load index.json");
+						}
+						return response.json();
+					})
+					.then((data) => {
+						const lessonList = document.getElementById("lesson-list");
+						lessonList.innerHTML = "";
+
+						data.lessons.forEach((lesson) => {
+							const lessonItem = document.createElement("li");
+							lessonItem.className = "bg-gray-700 p-3 rounded-lg";
+
+							const lessonHeader = document.createElement("div");
+							lessonHeader.className = `
+                    flex justify-between items-center cursor-pointer
+                    hover:bg-cyan-500 hover:text-gray-900 p-2 rounded-lg
+                `;
+							lessonHeader.textContent = lesson.name;
+
+							const topicList = document.createElement("ul");
+							topicList.className = "pl-4 mt-2 space-y-1 hidden";
+
+							lesson.topics.forEach((topic) => {
+								const topicItem = document.createElement("li");
+								topicItem.className = `
+                        bg-gray-600 p-2 rounded-lg cursor-pointer
+                        hover:bg-cyan-500 hover:text-gray-900
+                    `;
+								topicItem.textContent = topic.name;
+
+								topicItem.addEventListener("click", async () => {
+									try {
+										const resolvedPath = topic.path;
+										console.log(`Fetching quiz data from: ${resolvedPath}`);
+
+										const response = await fetch(resolvedPath);
+										if (!response.ok) {
+											throw new Error(`Failed to load ${resolvedPath}`);
+										}
+										quizData = await response.json();
+										console.log("Loaded quizData:", quizData);
+
+										// Automatically initialize and start the quiz
+										document
+											.getElementById("landing-page")
+											.classList.add("hidden");
+										document
+											.getElementById("quiz-container")
+											.classList.remove("hidden");
+										initializeQuiz();
+										sidebar.classList.toggle("hidden");
+									} catch (error) {
+										alert(`Error: ${error.message}`);
+									}
+								});
+
+								topicList.appendChild(topicItem);
+							});
+
+							lessonHeader.addEventListener("click", () => {
+								topicList.classList.toggle("hidden");
+							});
+
+							lessonItem.appendChild(lessonHeader);
+							lessonItem.appendChild(topicList);
+							lessonList.appendChild(lessonItem);
+						});
+
+						document.getElementById("sidebar").classList.remove("hidden");
+						document.getElementById("main-content").classList.add("hidden");
+					})
+					.catch((error) => {
+						alert(`Error loading sidebar: ${error.message}`);
+					});
+			}
+		</script>
+	</body>
+</html>
