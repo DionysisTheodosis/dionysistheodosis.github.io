@@ -525,7 +525,10 @@
 					return;
 				}
 
-				if (quizData.lesson) {
+				if (quizData.topic) {
+					lessonTitleEl.textContent = quizData.topic;
+				}
+				else if(quizData.lesson){
 					lessonTitleEl.textContent = quizData.lesson;
 				}
 				loadQuestion(currentIndex);
