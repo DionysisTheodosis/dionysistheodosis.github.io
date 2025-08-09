@@ -1,336 +1,336 @@
 {
-  "lesson": "Ασφάλεια Πληροφοριών",
-  "topic": "ISO 27002",
+  "lesson": "Ασφάλεια Πληροφοριακών Συστημάτων",
+  "topic": "Πολλαπλής Επιλογής",
   "questions": [
     {
-      "question": "Ερώτηση 1 - Παρτίδα 3: Ποια είναι η σωστή απάντηση σχετικά με το ISO 27002;",
+      "question": "Ένα DDoS attack στοχεύει κυρίως:",
       "answers": [
         {
-          "text": "Σωστή απάντηση",
+          "text": "Στην εμπιστευτικότητα των δεδομένων",
+          "isCorrect": false
+        },
+        {
+          "text": "Στην ακεραιότητα των δεδομένων",
+          "isCorrect": false
+        },
+        {
+          "text": "Στη διαθεσιμότητα των υπηρεσιών",
           "isCorrect": true
         },
         {
-          "text": "Λάθος απάντηση 1",
-          "isCorrect": false
-        },
-        {
-          "text": "Λάθος απάντηση 2",
-          "isCorrect": false
-        },
-        {
-          "text": "Λάθος απάντηση 3",
+          "text": "Στην αυθεντικοποίηση των χρηστών",
           "isCorrect": false
         }
       ],
       "multiSelect": false
     },
     {
-      "question": "Ερώτηση 2 - Παρτίδα 3: Ποια είναι η σωστή απάντηση σχετικά με το ISO 27002;",
+      "question": "Ποιοι από τους παρακάτω είναι ισχυροί μηχανισμοί αυθεντικοποίησης;",
       "answers": [
         {
-          "text": "Σωστή απάντηση",
+          "text": "Δύο παράγοντες (2FA)",
           "isCorrect": true
         },
         {
-          "text": "Λάθος απάντηση 1",
+          "text": "Username και password μόνο",
           "isCorrect": false
         },
         {
-          "text": "Λάθος απάντηση 2",
+          "text": "Βιομετρική αναγνώριση",
+          "isCorrect": true
+        },
+        {
+          "text": "Χρήση σταθερού PIN 4 ψηφίων",
+          "isCorrect": false
+        }
+      ],
+      "multiSelect": true
+    },
+    {
+      "question": "Το πρωτόκολλο HTTPS προσφέρει:",
+      "answers": [
+        {
+          "text": "Κρυπτογράφηση των δεδομένων κατά τη μεταφορά",
+          "isCorrect": true
+        },
+        {
+          "text": "Ακεραιότητα μηνυμάτων",
+          "isCorrect": true
+        },
+        {
+          "text": "Ανωνυμία χρήστη",
           "isCorrect": false
         },
         {
-          "text": "Λάθος απάντηση 3",
+          "text": "Επαλήθευση ταυτότητας του εξυπηρετητή",
+          "isCorrect": true
+        }
+      ],
+      "multiSelect": true
+    },
+    {
+      "question": "Μέτρα φυσικής ασφάλειας περιλαμβάνουν:",
+      "answers": [
+        {
+          "text": "Firewall",
+          "isCorrect": false
+        },
+        {
+          "text": "Κλειδαριές και κάρτες πρόσβασης",
+          "isCorrect": true
+        },
+        {
+          "text": "CCTV",
+          "isCorrect": true
+        },
+        {
+          "text": "Σάρωση θυρών (Port scanning)",
+          "isCorrect": false
+        }
+      ],
+      "multiSelect": true
+    },
+    {
+      "question": "Ένα phishing email συχνά περιλαμβάνει:",
+      "answers": [
+        {
+          "text": "Σύνδεσμο προς ψεύτικη ιστοσελίδα",
+          "isCorrect": true
+        },
+        {
+          "text": "Συνημμένα αρχεία με κακόβουλο κώδικα",
+          "isCorrect": true
+        },
+        {
+          "text": "Κρυπτογράφηση δεδομένων",
+          "isCorrect": false
+        },
+        {
+          "text": "Μηχανισμό πολυπαραγοντικής αυθεντικοποίησης",
+          "isCorrect": false
+        }
+      ],
+      "multiSelect": true
+    },
+    {
+      "question": "Η έννοια του “least privilege” αναφέρεται:",
+      "answers": [
+        {
+          "text": "Στην αποθήκευση μόνο των απαραίτητων δεδομένων",
+          "isCorrect": false
+        },
+        {
+          "text": "Στην παροχή στους χρήστες μόνο των απαραίτητων δικαιωμάτων για την εργασία τους",
+          "isCorrect": true
+        },
+        {
+          "text": "Στην απομάκρυνση όλων των δικαιωμάτων μετά τη σύνδεση",
+          "isCorrect": false
+        },
+        {
+          "text": "Στη διαγραφή αρχείων μετά τη χρήση",
           "isCorrect": false
         }
       ],
       "multiSelect": false
     },
     {
-      "question": "Ερώτηση 3 - Παρτίδα 3: Ποια είναι η σωστή απάντηση σχετικά με το ISO 27002;",
+      "question": "Ένα σύστημα IDS μπορεί να:",
       "answers": [
         {
-          "text": "Σωστή απάντηση",
+          "text": "Ανιχνεύσει ύποπτη δραστηριότητα",
           "isCorrect": true
         },
         {
-          "text": "Λάθος απάντηση 1",
+          "text": "Εμποδίσει την πρόσβαση σε κακόβουλη διεύθυνση",
+          "isCorrect": true
+        },
+        {
+          "text": "Επαληθεύσει την ταυτότητα χρήστη",
           "isCorrect": false
         },
         {
-          "text": "Λάθος απάντηση 2",
+          "text": "Δημιουργήσει αναφορές ασφαλείας",
+          "isCorrect": true
+        }
+      ],
+      "multiSelect": true
+    },
+    {
+      "question": "Η διαχείριση ευπαθειών περιλαμβάνει:",
+      "answers": [
+        {
+          "text": "Συνεχή σάρωση για αδυναμίες",
+          "isCorrect": true
+        },
+        {
+          "text": "Εφαρμογή patches και ενημερώσεων",
+          "isCorrect": true
+        },
+        {
+          "text": "Μηδενική πρόσβαση στο διαδίκτυο",
           "isCorrect": false
         },
         {
-          "text": "Λάθος απάντηση 3",
+          "text": "Παρακολούθηση αλλαγών συστήματος",
+          "isCorrect": true
+        }
+      ],
+      "multiSelect": true
+    },
+    {
+      "question": "Ενέργειες μετά από περιστατικό ασφαλείας:",
+      "answers": [
+        {
+          "text": "Απομόνωση επηρεαζόμενων συστημάτων",
+          "isCorrect": true
+        },
+        {
+          "text": "Επαναφορά από αντίγραφα ασφαλείας",
+          "isCorrect": true
+        },
+        {
+          "text": "Αγνόηση του περιστατικού εφόσον δεν είναι κρίσιμο",
+          "isCorrect": false
+        },
+        {
+          "text": "Ανάλυση αιτιών",
+          "isCorrect": true
+        }
+      ],
+      "multiSelect": true
+    },
+    {
+      "question": "Ποιο από τα παρακάτω θεωρείται κοινωνική μηχανική (social engineering);",
+      "answers": [
+        {
+          "text": "Shoulder surfing",
+          "isCorrect": true
+        },
+        {
+          "text": "SQL injection",
+          "isCorrect": false
+        },
+        {
+          "text": "Tailgating",
+          "isCorrect": true
+        },
+        {
+          "text": "DNS spoofing",
+          "isCorrect": false
+        }
+      ],
+      "multiSelect": true
+    },
+    {
+      "question": "Σε περιβάλλον cloud, η ευθύνη του πελάτη περιλαμβάνει:",
+      "answers": [
+        {
+          "text": "Την ασφάλεια των δεδομένων που ανεβάζει",
+          "isCorrect": true
+        },
+        {
+          "text": "Την φυσική προστασία των data centers",
+          "isCorrect": false
+        },
+        {
+          "text": "Τη διαχείριση των κωδικών πρόσβασης",
+          "isCorrect": true
+        },
+        {
+          "text": "Τη λειτουργία των υποκείμενων servers",
+          "isCorrect": false
+        }
+      ],
+      "multiSelect": true
+    },
+    {
+      "question": "Η αρχή CIA στην ασφάλεια πληροφοριών αναφέρεται σε:",
+      "answers": [
+        {
+          "text": "Confidentiality – Integrity – Availability",
+          "isCorrect": true
+        },
+        {
+          "text": "Confidentiality – Identification – Authentication",
+          "isCorrect": false
+        },
+        {
+          "text": "Control – Integrity – Authorization",
+          "isCorrect": false
+        },
+        {
+          "text": "Certification – Integrity – Access",
           "isCorrect": false
         }
       ],
       "multiSelect": false
     },
     {
-      "question": "Ερώτηση 4 - Παρτίδα 3: Ποια είναι η σωστή απάντηση σχετικά με το ISO 27002;",
+      "question": "Μια καλή πολιτική κωδικών πρόσβασης απαιτεί:",
       "answers": [
         {
-          "text": "Σωστή απάντηση",
+          "text": "Τουλάχιστον 8 χαρακτήρες",
           "isCorrect": true
         },
         {
-          "text": "Λάθος απάντηση 1",
+          "text": "Συνδυασμό κεφαλαίων, πεζών, αριθμών και συμβόλων",
+          "isCorrect": true
+        },
+        {
+          "text": "Αλλαγή κωδικού κάθε 3–6 μήνες",
+          "isCorrect": true
+        },
+        {
+          "text": "Επαναχρησιμοποίηση παλιών κωδικών",
+          "isCorrect": false
+        }
+      ],
+      "multiSelect": true
+    },
+    {
+      "question": "Ένα honeypot χρησιμοποιείται για:",
+      "answers": [
+        {
+          "text": "Ελκυσμό και ανάλυση επιθέσεων",
+          "isCorrect": true
+        },
+        {
+          "text": "Αποθήκευση κρίσιμων δεδομένων",
           "isCorrect": false
         },
         {
-          "text": "Λάθος απάντηση 2",
+          "text": "Ανάκτηση χαμένων αρχείων",
           "isCorrect": false
         },
         {
-          "text": "Λάθος απάντηση 3",
+          "text": "Εφαρμογή πολυπαραγοντικής αυθεντικοποίησης",
           "isCorrect": false
         }
       ],
       "multiSelect": false
     },
     {
-      "question": "Ερώτηση 5 - Παρτίδα 3: Ποια είναι η σωστή απάντηση σχετικά με το ISO 27002;",
+      "question": "Τα πλεονεκτήματα της κρυπτογράφησης δεδομένων περιλαμβάνουν:",
       "answers": [
         {
-          "text": "Σωστή απάντηση",
+          "text": "Προστασία απορρήτου",
           "isCorrect": true
         },
         {
-          "text": "Λάθος απάντηση 1",
+          "text": "Μείωση μεγέθους αρχείων",
           "isCorrect": false
         },
         {
-          "text": "Λάθος απάντηση 2",
-          "isCorrect": false
-        },
-        {
-          "text": "Λάθος απάντηση 3",
-          "isCorrect": false
-        }
-      ],
-      "multiSelect": false
-    },
-    {
-      "question": "Ερώτηση 6 - Παρτίδα 3: Ποια είναι η σωστή απάντηση σχετικά με το ISO 27002;",
-      "answers": [
-        {
-          "text": "Σωστή απάντηση",
+          "text": "Διασφάλιση ακεραιότητας",
           "isCorrect": true
         },
         {
-          "text": "Λάθος απάντηση 1",
-          "isCorrect": false
-        },
-        {
-          "text": "Λάθος απάντηση 2",
-          "isCorrect": false
-        },
-        {
-          "text": "Λάθος απάντηση 3",
-          "isCorrect": false
-        }
-      ],
-      "multiSelect": false
-    },
-    {
-      "question": "Ερώτηση 7 - Παρτίδα 3: Ποια είναι η σωστή απάντηση σχετικά με το ISO 27002;",
-      "answers": [
-        {
-          "text": "Σωστή απάντηση",
+          "text": "Συμμόρφωση με κανονισμούς",
           "isCorrect": true
-        },
-        {
-          "text": "Λάθος απάντηση 1",
-          "isCorrect": false
-        },
-        {
-          "text": "Λάθος απάντηση 2",
-          "isCorrect": false
-        },
-        {
-          "text": "Λάθος απάντηση 3",
-          "isCorrect": false
         }
       ],
-      "multiSelect": false
-    },
-    {
-      "question": "Ερώτηση 8 - Παρτίδα 3: Ποια είναι η σωστή απάντηση σχετικά με το ISO 27002;",
-      "answers": [
-        {
-          "text": "Σωστή απάντηση",
-          "isCorrect": true
-        },
-        {
-          "text": "Λάθος απάντηση 1",
-          "isCorrect": false
-        },
-        {
-          "text": "Λάθος απάντηση 2",
-          "isCorrect": false
-        },
-        {
-          "text": "Λάθος απάντηση 3",
-          "isCorrect": false
-        }
-      ],
-      "multiSelect": false
-    },
-    {
-      "question": "Ερώτηση 9 - Παρτίδα 3: Ποια είναι η σωστή απάντηση σχετικά με το ISO 27002;",
-      "answers": [
-        {
-          "text": "Σωστή απάντηση",
-          "isCorrect": true
-        },
-        {
-          "text": "Λάθος απάντηση 1",
-          "isCorrect": false
-        },
-        {
-          "text": "Λάθος απάντηση 2",
-          "isCorrect": false
-        },
-        {
-          "text": "Λάθος απάντηση 3",
-          "isCorrect": false
-        }
-      ],
-      "multiSelect": false
-    },
-    {
-      "question": "Ερώτηση 10 - Παρτίδα 3: Ποια είναι η σωστή απάντηση σχετικά με το ISO 27002;",
-      "answers": [
-        {
-          "text": "Σωστή απάντηση",
-          "isCorrect": true
-        },
-        {
-          "text": "Λάθος απάντηση 1",
-          "isCorrect": false
-        },
-        {
-          "text": "Λάθος απάντηση 2",
-          "isCorrect": false
-        },
-        {
-          "text": "Λάθος απάντηση 3",
-          "isCorrect": false
-        }
-      ],
-      "multiSelect": false
-    },
-    {
-      "question": "Ερώτηση 11 - Παρτίδα 3: Ποια είναι η σωστή απάντηση σχετικά με το ISO 27002;",
-      "answers": [
-        {
-          "text": "Σωστή απάντηση",
-          "isCorrect": true
-        },
-        {
-          "text": "Λάθος απάντηση 1",
-          "isCorrect": false
-        },
-        {
-          "text": "Λάθος απάντηση 2",
-          "isCorrect": false
-        },
-        {
-          "text": "Λάθος απάντηση 3",
-          "isCorrect": false
-        }
-      ],
-      "multiSelect": false
-    },
-    {
-      "question": "Ερώτηση 12 - Παρτίδα 3: Ποια είναι η σωστή απάντηση σχετικά με το ISO 27002;",
-      "answers": [
-        {
-          "text": "Σωστή απάντηση",
-          "isCorrect": true
-        },
-        {
-          "text": "Λάθος απάντηση 1",
-          "isCorrect": false
-        },
-        {
-          "text": "Λάθος απάντηση 2",
-          "isCorrect": false
-        },
-        {
-          "text": "Λάθος απάντηση 3",
-          "isCorrect": false
-        }
-      ],
-      "multiSelect": false
-    },
-    {
-      "question": "Ερώτηση 13 - Παρτίδα 3: Ποια είναι η σωστή απάντηση σχετικά με το ISO 27002;",
-      "answers": [
-        {
-          "text": "Σωστή απάντηση",
-          "isCorrect": true
-        },
-        {
-          "text": "Λάθος απάντηση 1",
-          "isCorrect": false
-        },
-        {
-          "text": "Λάθος απάντηση 2",
-          "isCorrect": false
-        },
-        {
-          "text": "Λάθος απάντηση 3",
-          "isCorrect": false
-        }
-      ],
-      "multiSelect": false
-    },
-    {
-      "question": "Ερώτηση 14 - Παρτίδα 3: Ποια είναι η σωστή απάντηση σχετικά με το ISO 27002;",
-      "answers": [
-        {
-          "text": "Σωστή απάντηση",
-          "isCorrect": true
-        },
-        {
-          "text": "Λάθος απάντηση 1",
-          "isCorrect": false
-        },
-        {
-          "text": "Λάθος απάντηση 2",
-          "isCorrect": false
-        },
-        {
-          "text": "Λάθος απάντηση 3",
-          "isCorrect": false
-        }
-      ],
-      "multiSelect": false
-    },
-    {
-      "question": "Ερώτηση 15 - Παρτίδα 3: Ποια είναι η σωστή απάντηση σχετικά με το ISO 27002;",
-      "answers": [
-        {
-          "text": "Σωστή απάντηση",
-          "isCorrect": true
-        },
-        {
-          "text": "Λάθος απάντηση 1",
-          "isCorrect": false
-        },
-        {
-          "text": "Λάθος απάντηση 2",
-          "isCorrect": false
-        },
-        {
-          "text": "Λάθος απάντηση 3",
-          "isCorrect": false
-        }
-      ],
-      "multiSelect": false
+      "multiSelect": true
     }
   ]
 }

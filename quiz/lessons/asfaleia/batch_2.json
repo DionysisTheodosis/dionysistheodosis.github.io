@@ -1,336 +1,156 @@
 {
-  "lesson": "Ασφάλεια Πληροφοριών",
-  "topic": "Διαχείριση Κινδύνων",
+  "lesson": "Ασφάλεια Πληροφοριακών Συστημάτων",
+  "topic": "Προχωρημένες Ερωτήσεις",
   "questions": [
     {
-      "question": "Ερώτηση 1 - Παρτίδα 2: Ποια είναι η σωστή απάντηση σχετικά με το Διαχείριση Κινδύνων;",
+      "question": "Τι είναι το SQL Injection;",
       "answers": [
-        {
-          "text": "Σωστή απάντηση",
-          "isCorrect": true
-        },
-        {
-          "text": "Λάθος απάντηση 1",
-          "isCorrect": false
-        },
-        {
-          "text": "Λάθος απάντηση 2",
-          "isCorrect": false
-        },
-        {
-          "text": "Λάθος απάντηση 3",
-          "isCorrect": false
-        }
+        {"text": "Μια τεχνική εισβολής μέσω κακόβουλου SQL κώδικα", "isCorrect": true},
+        {"text": "Μια μορφή κρυπτογράφησης δεδομένων", "isCorrect": false},
+        {"text": "Ένα πρωτόκολλο ασφάλειας δικτύου", "isCorrect": false},
+        {"text": "Ένα είδος firewall", "isCorrect": false}
       ],
       "multiSelect": false
     },
     {
-      "question": "Ερώτηση 2 - Παρτίδα 2: Ποια είναι η σωστή απάντηση σχετικά με το Διαχείριση Κινδύνων;",
+      "question": "Ποιο από τα παρακάτω είναι χαρακτηριστικό ενός VPN;",
       "answers": [
-        {
-          "text": "Σωστή απάντηση",
-          "isCorrect": true
-        },
-        {
-          "text": "Λάθος απάντηση 1",
-          "isCorrect": false
-        },
-        {
-          "text": "Λάθος απάντηση 2",
-          "isCorrect": false
-        },
-        {
-          "text": "Λάθος απάντηση 3",
-          "isCorrect": false
-        }
+        {"text": "Δημιουργεί κρυπτογραφημένη σύνδεση μεταξύ δύο δικτύων", "isCorrect": true},
+        {"text": "Αυξάνει την ταχύτητα του Internet", "isCorrect": false},
+        {"text": "Εξασφαλίζει μόνο φυσική ασφάλεια", "isCorrect": false},
+        {"text": "Αποθηκεύει κωδικούς πρόσβασης", "isCorrect": false}
       ],
       "multiSelect": false
     },
     {
-      "question": "Ερώτηση 3 - Παρτίδα 2: Ποια είναι η σωστή απάντηση σχετικά με το Διαχείριση Κινδύνων;",
+      "question": "Ποια από τις παρακάτω πρακτικές βελτιώνει την ασφάλεια κωδικών;",
       "answers": [
-        {
-          "text": "Σωστή απάντηση",
-          "isCorrect": true
-        },
-        {
-          "text": "Λάθος απάντηση 1",
-          "isCorrect": false
-        },
-        {
-          "text": "Λάθος απάντηση 2",
-          "isCorrect": false
-        },
-        {
-          "text": "Λάθος απάντηση 3",
-          "isCorrect": false
-        }
+        {"text": "Χρήση password manager", "isCorrect": true},
+        {"text": "Κοινή χρήση κωδικών με συναδέλφους", "isCorrect": false},
+        {"text": "Επαναχρησιμοποίηση παλιών κωδικών", "isCorrect": false},
+        {"text": "Αποθήκευση κωδικών σε απλό κείμενο", "isCorrect": false}
       ],
       "multiSelect": false
     },
     {
-      "question": "Ερώτηση 4 - Παρτίδα 2: Ποια είναι η σωστή απάντηση σχετικά με το Διαχείριση Κινδύνων;",
+      "question": "Ποιοι από τους παρακάτω είναι τύποι κακόβουλου λογισμικού; (Επιλέξτε όλες τις σωστές απαντήσεις)",
       "answers": [
-        {
-          "text": "Σωστή απάντηση",
-          "isCorrect": true
-        },
-        {
-          "text": "Λάθος απάντηση 1",
-          "isCorrect": false
-        },
-        {
-          "text": "Λάθος απάντηση 2",
-          "isCorrect": false
-        },
-        {
-          "text": "Λάθος απάντηση 3",
-          "isCorrect": false
-        }
+        {"text": "Virus", "isCorrect": true},
+        {"text": "Worm", "isCorrect": true},
+        {"text": "Firewall", "isCorrect": false},
+        {"text": "Trojan", "isCorrect": true}
+      ],
+      "multiSelect": true
+    },
+    {
+      "question": "Τι περιλαμβάνει η διαδικασία του patch management;",
+      "answers": [
+        {"text": "Ενημέρωση λογισμικού για διόρθωση ευπαθειών", "isCorrect": true},
+        {"text": "Διαγραφή αρχείων συστήματος", "isCorrect": false},
+        {"text": "Αλλαγή κωδικών πρόσβασης", "isCorrect": false},
+        {"text": "Κατάργηση δικαιωμάτων χρήστη", "isCorrect": false}
       ],
       "multiSelect": false
     },
     {
-      "question": "Ερώτηση 5 - Παρτίδα 2: Ποια είναι η σωστή απάντηση σχετικά με το Διαχείριση Κινδύνων;",
+      "question": "Ποια από τις παρακάτω μεθόδους χρησιμοποιείται για την κρυπτογράφηση συμμετρικού κλειδιού;",
       "answers": [
-        {
-          "text": "Σωστή απάντηση",
-          "isCorrect": true
-        },
-        {
-          "text": "Λάθος απάντηση 1",
-          "isCorrect": false
-        },
-        {
-          "text": "Λάθος απάντηση 2",
-          "isCorrect": false
-        },
-        {
-          "text": "Λάθος απάντηση 3",
-          "isCorrect": false
-        }
+        {"text": "AES", "isCorrect": true},
+        {"text": "RSA", "isCorrect": false},
+        {"text": "SHA-256", "isCorrect": false},
+        {"text": "Diffie-Hellman", "isCorrect": false}
       ],
       "multiSelect": false
     },
     {
-      "question": "Ερώτηση 6 - Παρτίδα 2: Ποια είναι η σωστή απάντηση σχετικά με το Διαχείριση Κινδύνων;",
+      "question": "Τι είναι το phishing;",
       "answers": [
-        {
-          "text": "Σωστή απάντηση",
-          "isCorrect": true
-        },
-        {
-          "text": "Λάθος απάντηση 1",
-          "isCorrect": false
-        },
-        {
-          "text": "Λάθος απάντηση 2",
-          "isCorrect": false
-        },
-        {
-          "text": "Λάθος απάντηση 3",
-          "isCorrect": false
-        }
+        {"text": "Μια επίθεση που προσπαθεί να αποσπάσει προσωπικά δεδομένα μέσω ψεύτικων μηνυμάτων", "isCorrect": true},
+        {"text": "Μια τεχνική δημιουργίας αντιγράφων ασφαλείας", "isCorrect": false},
+        {"text": "Ένα πρωτόκολλο δικτύου", "isCorrect": false},
+        {"text": "Μια μορφή φυσικής ασφάλειας", "isCorrect": false}
       ],
       "multiSelect": false
     },
     {
-      "question": "Ερώτηση 7 - Παρτίδα 2: Ποια είναι η σωστή απάντηση σχετικά με το Διαχείριση Κινδύνων;",
+      "question": "Ποιοι από τους παρακάτω παράγοντες βελτιώνουν την ασφάλεια δικτύου; (Επιλέξτε όλες τις σωστές απαντήσεις)",
       "answers": [
-        {
-          "text": "Σωστή απάντηση",
-          "isCorrect": true
-        },
-        {
-          "text": "Λάθος απάντηση 1",
-          "isCorrect": false
-        },
-        {
-          "text": "Λάθος απάντηση 2",
-          "isCorrect": false
-        },
-        {
-          "text": "Λάθος απάντηση 3",
-          "isCorrect": false
-        }
+        {"text": "Χρήση firewall", "isCorrect": true},
+        {"text": "Ανοιχτές θύρες χωρίς έλεγχο", "isCorrect": false},
+        {"text": "Χρήση VPN", "isCorrect": true},
+        {"text": "Παρακολούθηση δικτύου (Network monitoring)", "isCorrect": true}
+      ],
+      "multiSelect": true
+    },
+    {
+      "question": "Τι σημαίνει ο όρος 'Zero-day exploit';",
+      "answers": [
+        {"text": "Εκμετάλλευση ευπάθειας πριν κυκλοφορήσει διόρθωση", "isCorrect": true},
+        {"text": "Πρόγραμμα προστασίας από ιούς", "isCorrect": false},
+        {"text": "Ενημέρωση λογισμικού", "isCorrect": false},
+        {"text": "Μηδενική πρόσβαση σε διακομιστή", "isCorrect": false}
       ],
       "multiSelect": false
     },
     {
-      "question": "Ερώτηση 8 - Παρτίδα 2: Ποια είναι η σωστή απάντηση σχετικά με το Διαχείριση Κινδύνων;",
+      "question": "Ποια είναι η λειτουργία του firewall;",
       "answers": [
-        {
-          "text": "Σωστή απάντηση",
-          "isCorrect": true
-        },
-        {
-          "text": "Λάθος απάντηση 1",
-          "isCorrect": false
-        },
-        {
-          "text": "Λάθος απάντηση 2",
-          "isCorrect": false
-        },
-        {
-          "text": "Λάθος απάντηση 3",
-          "isCorrect": false
-        }
+        {"text": "Φιλτράρει την εισερχόμενη και εξερχόμενη δικτυακή κίνηση", "isCorrect": true},
+        {"text": "Διαχειρίζεται κωδικούς πρόσβασης", "isCorrect": false},
+        {"text": "Παρέχει κρυπτογράφηση μηνυμάτων", "isCorrect": false},
+        {"text": "Ελέγχει φυσική πρόσβαση στο κτίριο", "isCorrect": false}
       ],
       "multiSelect": false
     },
     {
-      "question": "Ερώτηση 9 - Παρτίδα 2: Ποια είναι η σωστή απάντηση σχετικά με το Διαχείριση Κινδύνων;",
+      "question": "Ποια από τα παρακάτω είναι καλές πρακτικές για την ασφάλεια email; (Επιλέξτε όλες τις σωστές απαντήσεις)",
       "answers": [
-        {
-          "text": "Σωστή απάντηση",
-          "isCorrect": true
-        },
-        {
-          "text": "Λάθος απάντηση 1",
-          "isCorrect": false
-        },
-        {
-          "text": "Λάθος απάντηση 2",
-          "isCorrect": false
-        },
-        {
-          "text": "Λάθος απάντηση 3",
-          "isCorrect": false
-        }
+        {"text": "Αποφυγή ανοίγματος συνημμένων από άγνωστους αποστολείς", "isCorrect": true},
+        {"text": "Χρήση ισχυρών κωδικών πρόσβασης", "isCorrect": true},
+        {"text": "Ανταλλαγή κωδικών μέσω email", "isCorrect": false},
+        {"text": "Τακτική αλλαγή κωδικών", "isCorrect": true}
+      ],
+      "multiSelect": true
+    },
+    {
+      "question": "Τι είναι η κοινωνική μηχανική (social engineering);",
+      "answers": [
+        {"text": "Μέθοδοι εξαπάτησης ανθρώπων για απόκτηση πρόσβασης", "isCorrect": true},
+        {"text": "Μέθοδος κρυπτογράφησης", "isCorrect": false},
+        {"text": "Τεχνική διαχείρισης δικτύου", "isCorrect": false},
+        {"text": "Λογισμικό firewall", "isCorrect": false}
       ],
       "multiSelect": false
     },
     {
-      "question": "Ερώτηση 10 - Παρτίδα 2: Ποια είναι η σωστή απάντηση σχετικά με το Διαχείριση Κινδύνων;",
+      "question": "Ποιο από τα παρακάτω δεν είναι μέτρο προστασίας από ransomware;",
       "answers": [
-        {
-          "text": "Σωστή απάντηση",
-          "isCorrect": true
-        },
-        {
-          "text": "Λάθος απάντηση 1",
-          "isCorrect": false
-        },
-        {
-          "text": "Λάθος απάντηση 2",
-          "isCorrect": false
-        },
-        {
-          "text": "Λάθος απάντηση 3",
-          "isCorrect": false
-        }
+        {"text": "Τακτικά backup δεδομένων", "isCorrect": false},
+        {"text": "Ενημερώσεις λογισμικού", "isCorrect": false},
+        {"text": "Άνοιγμα ύποπτων email", "isCorrect": true},
+        {"text": "Χρήση antivirus", "isCorrect": false}
       ],
       "multiSelect": false
     },
     {
-      "question": "Ερώτηση 11 - Παρτίδα 2: Ποια είναι η σωστή απάντηση σχετικά με το Διαχείριση Κινδύνων;",
+      "question": "Ποια είναι η βασική διαφορά μεταξύ symmetric και asymmetric κρυπτογράφησης;",
       "answers": [
-        {
-          "text": "Σωστή απάντηση",
-          "isCorrect": true
-        },
-        {
-          "text": "Λάθος απάντηση 1",
-          "isCorrect": false
-        },
-        {
-          "text": "Λάθος απάντηση 2",
-          "isCorrect": false
-        },
-        {
-          "text": "Λάθος απάντηση 3",
-          "isCorrect": false
-        }
+        {"text": "Symmetric χρησιμοποιεί το ίδιο κλειδί για κρυπτογράφηση και αποκρυπτογράφηση, asymmetric διαφορετικά κλειδιά", "isCorrect": true},
+        {"text": "Symmetric είναι πιο αργή από asymmetric", "isCorrect": false},
+        {"text": "Asymmetric δεν χρησιμοποιείται για κρυπτογράφηση δεδομένων", "isCorrect": false},
+        {"text": "Symmetric βασίζεται σε δημόσιο κλειδί", "isCorrect": false}
       ],
       "multiSelect": false
     },
     {
-      "question": "Ερώτηση 12 - Παρτίδα 2: Ποια είναι η σωστή απάντηση σχετικά με το Διαχείριση Κινδύνων;",
+      "question": "Ποια από τα παρακάτω είναι συστατικά στοιχεία ενός ασφαλούς συστήματος ταυτοποίησης;",
       "answers": [
-        {
-          "text": "Σωστή απάντηση",
-          "isCorrect": true
-        },
-        {
-          "text": "Λάθος απάντηση 1",
-          "isCorrect": false
-        },
-        {
-          "text": "Λάθος απάντηση 2",
-          "isCorrect": false
-        },
-        {
-          "text": "Λάθος απάντηση 3",
-          "isCorrect": false
-        }
+        {"text": "Ταυτότητα χρήστη (identity)", "isCorrect": true},
+        {"text": "Μέθοδος επαλήθευσης (authentication)", "isCorrect": true},
+        {"text": "Πρόσβαση σε όλα τα αρχεία", "isCorrect": false},
+        {"text": "Μηδενική κρυπτογράφηση", "isCorrect": false}
       ],
-      "multiSelect": false
-    },
-    {
-      "question": "Ερώτηση 13 - Παρτίδα 2: Ποια είναι η σωστή απάντηση σχετικά με το Διαχείριση Κινδύνων;",
-      "answers": [
-        {
-          "text": "Σωστή απάντηση",
-          "isCorrect": true
-        },
-        {
-          "text": "Λάθος απάντηση 1",
-          "isCorrect": false
-        },
-        {
-          "text": "Λάθος απάντηση 2",
-          "isCorrect": false
-        },
-        {
-          "text": "Λάθος απάντηση 3",
-          "isCorrect": false
-        }
-      ],
-      "multiSelect": false
-    },
-    {
-      "question": "Ερώτηση 14 - Παρτίδα 2: Ποια είναι η σωστή απάντηση σχετικά με το Διαχείριση Κινδύνων;",
-      "answers": [
-        {
-          "text": "Σωστή απάντηση",
-          "isCorrect": true
-        },
-        {
-          "text": "Λάθος απάντηση 1",
-          "isCorrect": false
-        },
-        {
-          "text": "Λάθος απάντηση 2",
-          "isCorrect": false
-        },
-        {
-          "text": "Λάθος απάντηση 3",
-          "isCorrect": false
-        }
-      ],
-      "multiSelect": false
-    },
-    {
-      "question": "Ερώτηση 15 - Παρτίδα 2: Ποια είναι η σωστή απάντηση σχετικά με το Διαχείριση Κινδύνων;",
-      "answers": [
-        {
-          "text": "Σωστή απάντηση",
-          "isCorrect": true
-        },
-        {
-          "text": "Λάθος απάντηση 1",
-          "isCorrect": false
-        },
-        {
-          "text": "Λάθος απάντηση 2",
-          "isCorrect": false
-        },
-        {
-          "text": "Λάθος απάντηση 3",
-          "isCorrect": false
-        }
-      ],
-      "multiSelect": false
+      "multiSelect": true
     }
   ]
 }
