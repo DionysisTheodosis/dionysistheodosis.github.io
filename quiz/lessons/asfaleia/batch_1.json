@@ -1,0 +1,336 @@
+{
+  "lesson": "Ασφάλεια Πληροφοριών",
+  "topic": "Κρυπτογραφία",
+  "questions": [
+    {
+      "question": "Ερώτηση 1 - Παρτίδα 1: Ποια είναι η σωστή απάντηση σχετικά με το Κρυπτογραφία;",
+      "answers": [
+        {
+          "text": "Σωστή απάντηση",
+          "isCorrect": true
+        },
+        {
+          "text": "Λάθος απάντηση 1",
+          "isCorrect": false
+        },
+        {
+          "text": "Λάθος απάντηση 2",
+          "isCorrect": false
+        },
+        {
+          "text": "Λάθος απάντηση 3",
+          "isCorrect": false
+        }
+      ],
+      "multiSelect": false
+    },
+    {
+      "question": "Ερώτηση 2 - Παρτίδα 1: Ποια είναι η σωστή απάντηση σχετικά με το Κρυπτογραφία;",
+      "answers": [
+        {
+          "text": "Σωστή απάντηση",
+          "isCorrect": true
+        },
+        {
+          "text": "Λάθος απάντηση 1",
+          "isCorrect": false
+        },
+        {
+          "text": "Λάθος απάντηση 2",
+          "isCorrect": false
+        },
+        {
+          "text": "Λάθος απάντηση 3",
+          "isCorrect": false
+        }
+      ],
+      "multiSelect": false
+    },
+    {
+      "question": "Ερώτηση 3 - Παρτίδα 1: Ποια είναι η σωστή απάντηση σχετικά με το Κρυπτογραφία;",
+      "answers": [
+        {
+          "text": "Σωστή απάντηση",
+          "isCorrect": true
+        },
+        {
+          "text": "Λάθος απάντηση 1",
+          "isCorrect": false
+        },
+        {
+          "text": "Λάθος απάντηση 2",
+          "isCorrect": false
+        },
+        {
+          "text": "Λάθος απάντηση 3",
+          "isCorrect": false
+        }
+      ],
+      "multiSelect": false
+    },
+    {
+      "question": "Ερώτηση 4 - Παρτίδα 1: Ποια είναι η σωστή απάντηση σχετικά με το Κρυπτογραφία;",
+      "answers": [
+        {
+          "text": "Σωστή απάντηση",
+          "isCorrect": true
+        },
+        {
+          "text": "Λάθος απάντηση 1",
+          "isCorrect": false
+        },
+        {
+          "text": "Λάθος απάντηση 2",
+          "isCorrect": false
+        },
+        {
+          "text": "Λάθος απάντηση 3",
+          "isCorrect": false
+        }
+      ],
+      "multiSelect": false
+    },
+    {
+      "question": "Ερώτηση 5 - Παρτίδα 1: Ποια είναι η σωστή απάντηση σχετικά με το Κρυπτογραφία;",
+      "answers": [
+        {
+          "text": "Σωστή απάντηση",
+          "isCorrect": true
+        },
+        {
+          "text": "Λάθος απάντηση 1",
+          "isCorrect": false
+        },
+        {
+          "text": "Λάθος απάντηση 2",
+          "isCorrect": false
+        },
+        {
+          "text": "Λάθος απάντηση 3",
+          "isCorrect": false
+        }
+      ],
+      "multiSelect": false
+    },
+    {
+      "question": "Ερώτηση 6 - Παρτίδα 1: Ποια είναι η σωστή απάντηση σχετικά με το Κρυπτογραφία;",
+      "answers": [
+        {
+          "text": "Σωστή απάντηση",
+          "isCorrect": true
+        },
+        {
+          "text": "Λάθος απάντηση 1",
+          "isCorrect": false
+        },
+        {
+          "text": "Λάθος απάντηση 2",
+          "isCorrect": false
+        },
+        {
+          "text": "Λάθος απάντηση 3",
+          "isCorrect": false
+        }
+      ],
+      "multiSelect": false
+    },
+    {
+      "question": "Ερώτηση 7 - Παρτίδα 1: Ποια είναι η σωστή απάντηση σχετικά με το Κρυπτογραφία;",
+      "answers": [
+        {
+          "text": "Σωστή απάντηση",
+          "isCorrect": true
+        },
+        {
+          "text": "Λάθος απάντηση 1",
+          "isCorrect": false
+        },
+        {
+          "text": "Λάθος απάντηση 2",
+          "isCorrect": false
+        },
+        {
+          "text": "Λάθος απάντηση 3",
+          "isCorrect": false
+        }
+      ],
+      "multiSelect": false
+    },
+    {
+      "question": "Ερώτηση 8 - Παρτίδα 1: Ποια είναι η σωστή απάντηση σχετικά με το Κρυπτογραφία;",
+      "answers": [
+        {
+          "text": "Σωστή απάντηση",
+          "isCorrect": true
+        },
+        {
+          "text": "Λάθος απάντηση 1",
+          "isCorrect": false
+        },
+        {
+          "text": "Λάθος απάντηση 2",
+          "isCorrect": false
+        },
+        {
+          "text": "Λάθος απάντηση 3",
+          "isCorrect": false
+        }
+      ],
+      "multiSelect": false
+    },
+    {
+      "question": "Ερώτηση 9 - Παρτίδα 1: Ποια είναι η σωστή απάντηση σχετικά με το Κρυπτογραφία;",
+      "answers": [
+        {
+          "text": "Σωστή απάντηση",
+          "isCorrect": true
+        },
+        {
+          "text": "Λάθος απάντηση 1",
+          "isCorrect": false
+        },
+        {
+          "text": "Λάθος απάντηση 2",
+          "isCorrect": false
+        },
+        {
+          "text": "Λάθος απάντηση 3",
+          "isCorrect": false
+        }
+      ],
+      "multiSelect": false
+    },
+    {
+      "question": "Ερώτηση 10 - Παρτίδα 1: Ποια είναι η σωστή απάντηση σχετικά με το Κρυπτογραφία;",
+      "answers": [
+        {
+          "text": "Σωστή απάντηση",
+          "isCorrect": true
+        },
+        {
+          "text": "Λάθος απάντηση 1",
+          "isCorrect": false
+        },
+        {
+          "text": "Λάθος απάντηση 2",
+          "isCorrect": false
+        },
+        {
+          "text": "Λάθος απάντηση 3",
+          "isCorrect": false
+        }
+      ],
+      "multiSelect": false
+    },
+    {
+      "question": "Ερώτηση 11 - Παρτίδα 1: Ποια είναι η σωστή απάντηση σχετικά με το Κρυπτογραφία;",
+      "answers": [
+        {
+          "text": "Σωστή απάντηση",
+          "isCorrect": true
+        },
+        {
+          "text": "Λάθος απάντηση 1",
+          "isCorrect": false
+        },
+        {
+          "text": "Λάθος απάντηση 2",
+          "isCorrect": false
+        },
+        {
+          "text": "Λάθος απάντηση 3",
+          "isCorrect": false
+        }
+      ],
+      "multiSelect": false
+    },
+    {
+      "question": "Ερώτηση 12 - Παρτίδα 1: Ποια είναι η σωστή απάντηση σχετικά με το Κρυπτογραφία;",
+      "answers": [
+        {
+          "text": "Σωστή απάντηση",
+          "isCorrect": true
+        },
+        {
+          "text": "Λάθος απάντηση 1",
+          "isCorrect": false
+        },
+        {
+          "text": "Λάθος απάντηση 2",
+          "isCorrect": false
+        },
+        {
+          "text": "Λάθος απάντηση 3",
+          "isCorrect": false
+        }
+      ],
+      "multiSelect": false
+    },
+    {
+      "question": "Ερώτηση 13 - Παρτίδα 1: Ποια είναι η σωστή απάντηση σχετικά με το Κρυπτογραφία;",
+      "answers": [
+        {
+          "text": "Σωστή απάντηση",
+          "isCorrect": true
+        },
+        {
+          "text": "Λάθος απάντηση 1",
+          "isCorrect": false
+        },
+        {
+          "text": "Λάθος απάντηση 2",
+          "isCorrect": false
+        },
+        {
+          "text": "Λάθος απάντηση 3",
+          "isCorrect": false
+        }
+      ],
+      "multiSelect": false
+    },
+    {
+      "question": "Ερώτηση 14 - Παρτίδα 1: Ποια είναι η σωστή απάντηση σχετικά με το Κρυπτογραφία;",
+      "answers": [
+        {
+          "text": "Σωστή απάντηση",
+          "isCorrect": true
+        },
+        {
+          "text": "Λάθος απάντηση 1",
+          "isCorrect": false
+        },
+        {
+          "text": "Λάθος απάντηση 2",
+          "isCorrect": false
+        },
+        {
+          "text": "Λάθος απάντηση 3",
+          "isCorrect": false
+        }
+      ],
+      "multiSelect": false
+    },
+    {
+      "question": "Ερώτηση 15 - Παρτίδα 1: Ποια είναι η σωστή απάντηση σχετικά με το Κρυπτογραφία;",
+      "answers": [
+        {
+          "text": "Σωστή απάντηση",
+          "isCorrect": true
+        },
+        {
+          "text": "Λάθος απάντηση 1",
+          "isCorrect": false
+        },
+        {
+          "text": "Λάθος απάντηση 2",
+          "isCorrect": false
+        },
+        {
+          "text": "Λάθος απάντηση 3",
+          "isCorrect": false
+        }
+      ],
+      "multiSelect": false
+    }
+  ]
+}
