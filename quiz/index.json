@@ -64,29 +64,17 @@
 					"path": "lessons/asfaleia/lesson_15.json"
 				},
 				{
-  "name": "AI EXAM ALIKE 1",
-  "path": "lessons/asfaleia/batch_1.json"
-},
-{
-  "name": "AI EXAM ALIKE 2",
-  "path": "lessons/asfaleia/batch_2.json"
-},
-{
-  "name": "AI EXAM ALIKE 3",
-  "path": "lessons/asfaleia/batch_3.json"
-},
-{
-  "name": "AI EXAM ALIKE 4",
-  "path": "lessons/asfaleia/batch_4.json"
-},
-{
-  "name": "AI EXAM ALIKE 5",
-  "path": "lessons/asfaleia/batch_5.json"
-},
-{
-  "name": "AI EXAM ALIKE 6",
-  "path": "lessons/asfaleia/batch_6.json"
-}
+				  "name": "AI EXAM ALIKE 1",
+				  "path": "lessons/asfaleia/batch_1.json"
+				},
+				{
+				  "name": "AI EXAM ALIKE 2",
+				  "path": "lessons/asfaleia/batch_2.json"
+				},
+				{
+				  "name": "AI EXAM ALIKE 3",
+				  "path": "lessons/asfaleia/batch_3.json"
+				}
 			]
 		}
 	]
