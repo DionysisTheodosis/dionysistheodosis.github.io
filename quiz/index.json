@@ -74,18 +74,6 @@
 				{
 					"name": "AI EXAM ALIKE 3",
 					"path": "lessons/asfaleia/batch_3.json"
-				},
-				{
-					"name": "AI EXAM ALIKE 4",
-					"path": "lessons/asfaleia/batch_4.json"
-				},
-				{
-					"name": "AI EXAM ALIKE 5",
-					"path": "lessons/asfaleia/batch_5.json"
-				},
-				{
-					"name": "AI EXAM ALIKE 6",
-					"path": "lessons/asfaleia/batch_6.json"
 				}
 			]
 		},
