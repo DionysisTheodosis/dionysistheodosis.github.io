@@ -1,0 +1,206 @@
+{
+  "lesson": "Διαχείριση Δικτύων",
+  "topic": "SNMP, CMIP και Δικτυακή Διαχείριση",
+  "questions": [
+    {
+      "question": "Η Get-request χρησιμοποιείται ως βάση για να υλοποιηθεί η:",
+      "answers": [
+        { "text": "Καμία", "isCorrect": false },
+        { "text": "Get-next-request", "isCorrect": true },
+        { "text": "Get-bulk-request", "isCorrect": true },
+        { "text": "Get-walk-request", "isCorrect": false }
+      ],
+      "multiSelect": true
+    },
+    {
+      "question": "Η Get-next-request χρησιμοποιείται ως βάση για να υλοποιηθεί η:",
+      "answers": [
+        { "text": "Καμία", "isCorrect": false },
+        { "text": "Get-request", "isCorrect": true },
+        { "text": "Get-bulk-request", "isCorrect": true },
+        { "text": "Get-walk-request", "isCorrect": false }
+      ],
+      "multiSelect": true
+    },
+    {
+      "question": "Η Set του SNMP υλοποιείται στο CMIP με την:",
+      "answers": [
+        { "text": "M-Set", "isCorrect": true },
+        { "text": "M-Delete", "isCorrect": false },
+        { "text": "M-Action", "isCorrect": false },
+        { "text": "M-Create", "isCorrect": false }
+      ],
+      "multiSelect": false
+    },
+    {
+      "question": "Η Bulk-request του SNMP υλοποιείται στο CMIP με την:",
+      "answers": [
+        { "text": "M-Set", "isCorrect": false },
+        { "text": "M-GET", "isCorrect": false },
+        { "text": "M-Action", "isCorrect": false },
+        { "text": "M-Cancel-Get", "isCorrect": true }
+      ],
+      "multiSelect": false
+    },
+    {
+      "question": "Απαιτείται επιβεβαίωση για την:",
+      "answers": [
+        { "text": "M-GET", "isCorrect": false },
+        { "text": "M-Delete", "isCorrect": false },
+        { "text": "M-Action", "isCorrect": true },
+        { "text": "M-Create", "isCorrect": true }
+      ],
+      "multiSelect": true
+    },
+    {
+      "question": "Για να επιλέξεις μια ομάδα αντικειμένων σε ένα δένδρο (MIT) απαιτείται:",
+      "answers": [
+        { "text": "Scoping", "isCorrect": false },
+        { "text": "Filtering", "isCorrect": false },
+        { "text": "Scoping και Filtering", "isCorrect": true },
+        { "text": "Synchronization", "isCorrect": false }
+      ],
+      "multiSelect": false
+    },
+    {
+      "question": "Το ποσοστό λαθών σε σχέση με την όλη κίνηση είναι μία από τις τιμές που μετρώνται κατά τη:",
+      "answers": [
+        { "text": "Διαχείριση Επίδοσης", "isCorrect": true },
+        { "text": "Διαχείριση Λαθών", "isCorrect": false },
+        { "text": "Διαχείριση Ασφάλειας", "isCorrect": false },
+        { "text": "Διαχείριση Διάρθρωσης", "isCorrect": false }
+      ],
+      "multiSelect": false
+    },
+    {
+      "question": "Ο υπολογισμός του throughput αφορά την:",
+      "answers": [
+        { "text": "Διαχείριση Επίδοσης", "isCorrect": true },
+        { "text": "Διαχείριση Λαθών", "isCorrect": false },
+        { "text": "Διαχείριση Ασφάλειας", "isCorrect": false },
+        { "text": "Διαχείριση Διάρθρωσης", "isCorrect": false }
+      ],
+      "multiSelect": false
+    },
+    {
+      "question": "Η XML μπορεί να χρησιμοποιηθεί για:",
+      "answers": [
+        { "text": "Διαχείριση Επίδοσης", "isCorrect": false },
+        { "text": "Διαχείριση Λαθών", "isCorrect": false },
+        { "text": "Διαχείριση Ασφάλειας", "isCorrect": false },
+        { "text": "Διαχείριση Διάρθρωσης", "isCorrect": true }
+      ],
+      "multiSelect": false
+    },
+    {
+      "question": "Δομικό στοιχείο των Web Services αποτελεί:",
+      "answers": [
+        { "text": "UDDI", "isCorrect": false },
+        { "text": "SOAP", "isCorrect": false },
+        { "text": "UDDI ή SOAP", "isCorrect": true },
+        { "text": "Κανένα", "isCorrect": false }
+      ],
+      "multiSelect": false
+    },
+    {
+      "question": "Ασύγχρονο μήνυμα του SNMP είναι:",
+      "answers": [
+        { "text": "Κανένα", "isCorrect": false },
+        { "text": "Get-bulk-request", "isCorrect": false },
+        { "text": "Trap", "isCorrect": true },
+        { "text": "Get-response", "isCorrect": false }
+      ],
+      "multiSelect": false
+    },
+    {
+      "question": "Η Get-next-request χρησιμοποιείται ως βάση για να υλοποιηθεί η:",
+      "answers": [
+        { "text": "Καμία", "isCorrect": false },
+        { "text": "Get-request", "isCorrect": false },
+        { "text": "Get-bulk-request", "isCorrect": true },
+        { "text": "Get-walk-request", "isCorrect": true }
+      ],
+      "multiSelect": true
+    },
+    {
+      "question": "Η Set του SNMP υλοποιείται στο CMIP με την:",
+      "answers": [
+        { "text": "M-Set", "isCorrect": true },
+        { "text": "M-Delete", "isCorrect": false },
+        { "text": "M-Action", "isCorrect": false },
+        { "text": "M-Create", "isCorrect": false }
+      ],
+      "multiSelect": false
+    },
+    {
+      "question": "Για να επιλέξεις ένα αντικείμενο σε ένα δένδρο (MIT) απαιτείται:",
+      "answers": [
+        { "text": "Scoping", "isCorrect": true },
+        { "text": "Filtering", "isCorrect": false },
+        { "text": "Scoping και Filtering", "isCorrect": false },
+        { "text": "Synchronization", "isCorrect": false }
+      ],
+      "multiSelect": false
+    },
+    {
+      "question": "Ποιοι υποστηρίζουν την Walled Garden Αρχιτεκτονική:",
+      "answers": [
+        { "text": "Οι τελικοί χρήστες", "isCorrect": false },
+        { "text": "Οι Πάροχοι Περιεχομένου", "isCorrect": false },
+        { "text": "Οι Πάροχοι Υποδομών", "isCorrect": false },
+        { "text": "Οι Πάροχοι Υπηρεσιών", "isCorrect": true }
+      ],
+      "multiSelect": false
+    },
+    {
+      "question": "Σύγχρονο μήνυμα του SNMP είναι:",
+      "answers": [
+        { "text": "Κανένα", "isCorrect": false },
+        { "text": "Get-bulk-request", "isCorrect": false },
+        { "text": "Trap", "isCorrect": false },
+        { "text": "Get-response", "isCorrect": true }
+      ],
+      "multiSelect": false
+    },
+    {
+      "question": "Η Get-next-request χρησιμοποιείται ως βάση για να υλοποιηθεί η:",
+      "answers": [
+        { "text": "Καμία", "isCorrect": false },
+        { "text": "Get -request", "isCorrect": false },
+        { "text": "Get-bulk-request", "isCorrect": true },
+        { "text": "Get-walk-request", "isCorrect": true }
+      ],
+      "multiSelect": true
+    },
+    {
+      "question": "Δεν απαιτείται επιβεβαίωση για την:",
+      "answers": [
+        { "text": "M-GET", "isCorrect": true },
+        { "text": "M-Delete", "isCorrect": true },
+        { "text": "M-Action", "isCorrect": false },
+        { "text": "M-Create", "isCorrect": false }
+      ],
+      "multiSelect": true
+    },
+    {
+      "question": "Για να επιλέξεις μια ομάδα αντικειμένων σε ένα δένδρο (MIT) απαιτείται:",
+      "answers": [
+        { "text": "Scoping", "isCorrect": false },
+        { "text": "Filtering", "isCorrect": false },
+        { "text": "Scoping και Filtering", "isCorrect": true },
+        { "text": "Synchronization", "isCorrect": false }
+      ],
+      "multiSelect": false
+    },
+    {
+      "question": "Το ποσοστό λαθών σε σχέση με την όλη κίνηση είναι μία από τις τιμές που μετρώνται κατά την:",
+      "answers": [
+        { "text": "Διαχείριση Επίδοσης", "isCorrect": true },
+        { "text": "Διαχείριση Λαθών", "isCorrect": false },
+        { "text": "Διαχείριση Ασφάλειας", "isCorrect": false },
+        { "text": "Διαχείριση Διάρθρωσης", "isCorrect": false }
+      ],
+      "multiSelect": false
+    }
+  ]
+}
