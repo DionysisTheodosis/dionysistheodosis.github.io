@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Markdown Browser</title>
+<!-- Include Marked.js for Markdown parsing -->
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+<style>
+    body { font-family: Arial, sans-serif; margin: 20px; background: #f9f9f9; }
+    select { padding: 8px; margin-bottom: 20px; }
+    #content { background: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+    h1, h2, h3 { color: #333; }
+</style>
+</head>
+<body>
+
+<h1>Markdown Browser</h1>
+
+<select id="mdSelector">
+    <option value="">-- Select a Markdown file --</option>
+    <option value="erp.md">ERP</option>
+    <option value="scm.md">SCM</option>
+    <option value="crm.md">CRM</option>
+    <option value="bi.md">BI</option>
+    <option value="tps.md">TPS</option>
+    <option value="mis.md">MIS</option>
+    <option value="dss.md">DSS</option>
+    <option value="ess.md">ESS</option>
+    <option value="kms.md">KMS</option>
+    <option value="tco.md">TCO</option>
+    <option value="edi.md">EDI</option>
+</select>
+
+<div id="content">
+    <p>Select a Markdown file to view its content.</p>
+</div>
+
+<script>
+const baseURL = "https://dionysistheodosis.github.io/misc/";
+
+const selector = document.getElementById("mdSelector");
+const content = document.getElementById("content");
+
+selector.addEventListener("change", async () => {
+    const file = selector.value;
+    if (!file) {
+        content.innerHTML = "<p>Select a Markdown file to view its content.</p>";
+        return;
+    }
+    try {
+        const res = await fetch(baseURL + file);
+        if (!res.ok) throw new Error("Failed to load file.");
+        const mdText = await res.text();
+        content.innerHTML = marked.parse(mdText);
+    } catch (err) {
+        content.innerHTML = `<p style="color:red;">Error loading file: ${err.message}</p>`;
+    }
+});
+</script>
+
+</body>
+</html>
