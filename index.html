@@ -1,297 +1,668 @@
-<!DOCTYPE html>
-<html lang="en" class="light">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Dionysis Theodosis - Portfolio</title>
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Dionysis Theodosis | Developer Portfolio</title>
+        <meta
+            name="description"
+            content="Portfolio of Dionysis Theodosis - University Student & Java/Web Developer"
+        />
 
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=JetBrains+Mono:wght@400;700&display=swap"
+            rel="stylesheet"
+        />
 
-  <!-- Tailwind CSS -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      darkMode: false,
-      theme: {
-        extend: {
-          colors: {
-            emerald: {
-              DEFAULT: '#10b981',
-              dark:    '#047857',
-            },
-          },
-          keyframes: {
-            'fade-in': {
-              '0%':   { opacity: '0', transform: 'translateY(20px)' },
-              '100%':{ opacity: '1', transform: 'translateY(0)'   },
-            },
-            'wave-float': {
-              '0%, 100%': { transform: 'translateY(0)' },
-              '50%': { transform: 'translateY(-10px)' },
+        <script src="https://cdn.tailwindcss.com"></script>
+        <script>
+            tailwind.config = {
+                darkMode: "class",
+                theme: {
+                    extend: {
+                        fontFamily: {
+                            sans: ["Inter", "sans-serif"],
+                            mono: ["JetBrains Mono", "monospace"],
+                        },
+                        colors: {
+                            // Darker, cleaner slate tones
+                            bg: "#0f172a", // Slate 900
+                            surface: "#1e293b", // Slate 800
+                            primary: "#10b981", // Emerald 500
+                            primaryHover: "#059669", // Emerald 600
+                        },
+                        animation: {
+                            blob: "blob 7s infinite",
+                            cursor: "cursor .75s step-end infinite",
+                        },
+                        keyframes: {
+                            blob: {
+                                "0%": {
+                                    transform: "translate(0px, 0px) scale(1)",
+                                },
+                                "33%": {
+                                    transform:
+                                        "translate(30px, -50px) scale(1.1)",
+                                },
+                                "66%": {
+                                    transform:
+                                        "translate(-20px, 20px) scale(0.9)",
+                                },
+                                "100%": {
+                                    transform: "translate(0px, 0px) scale(1)",
+                                },
+                            },
+                            cursor: {
+                                "0%, 100%": { opacity: "1" },
+                                "50%": { opacity: "0" },
+                            },
+                        },
+                    },
+                },
+            };
+        </script>
+
+        <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+
+        <style>
+            /* Custom Scrollbar */
+            ::-webkit-scrollbar {
+                width: 8px;
             }
-          },
-          animation: {
-            'fade-in': 'fade-in 0.6s ease-out forwards',
-            'wave-float': 'wave-float 3s ease-in-out infinite',
-          },
-          borderRadius: {
-            'custom-b': '0 0 4rem 4rem',
-          },
-        },
-      },
-    }
-  </script>
+            ::-webkit-scrollbar-track {
+                background: #0f172a;
+            }
+            ::-webkit-scrollbar-thumb {
+                background: #334155;
+                border-radius: 4px;
+            }
+            ::-webkit-scrollbar-thumb:hover {
+                background: #10b981;
+            }
 
-  <!-- Lucide Icons -->
-  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+            /* Dot Grid Background Pattern */
+            .bg-grid-pattern {
+                background-size: 40px 40px;
+                background-image: radial-gradient(
+                    circle,
+                    #334155 1px,
+                    transparent 1px
+                );
+            }
 
-  <style>
-    body {
-      font-family: 'Inter', sans-serif;
-      background: linear-gradient(135deg, #1f2937 0%, #111827 100%);
-      color: #e5e7eb;
-      min-height: 100vh;
-      margin: 0;
-      padding: 0;
-    }
-    
-    .wave-container {
-      position: relative;
-      width: 100%;
-      overflow: hidden;
-      height: 150px;
-    }
-    
-    .header-wave {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      overflow: hidden;
-      line-height: 0;
-    }
-    
-    .header-wave svg {
-      position: relative;
-      display: block;
-      width: calc(100% + 1.3px);
-      height: 150px;
-    }
-    
-    .wave-shape {
-      fill: rgba(31, 41, 55, 0.7);
-    }
-    
-    .lucide {
-      stroke: currentColor;
-    }
-  </style>
-</head>
-<body class="flex flex-col items-center min-h-screen">
+            /* Reveal Animation Classes */
+            .reveal {
+                opacity: 0;
+                transform: translateY(30px);
+                transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+            }
+            .reveal.active {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        </style>
+    </head>
+    <body
+        class="bg-bg text-slate-300 antialiased relative overflow-x-hidden selection:bg-primary selection:text-white"
+    >
+        <div class="fixed inset-0 z-[-1] overflow-hidden pointer-events-none">
+            <div
+                class="absolute top-0 left-1/4 w-96 h-96 bg-primary/20 rounded-full mix-blend-screen filter blur-[100px] opacity-30 animate-blob"
+            ></div>
+            <div
+                class="absolute bottom-0 right-1/4 w-96 h-96 bg-blue-500/20 rounded-full mix-blend-screen filter blur-[100px] opacity-30 animate-blob animation-delay-2000"
+            ></div>
+            <div class="absolute inset-0 bg-grid-pattern opacity-[0.15]"></div>
+        </div>
 
-  <!-- Enhanced Wave Header -->
-  <div class="relative w-full overflow-hidden">
+        <nav
+            class="fixed top-0 w-full z-50 transition-all duration-300"
+            id="navbar"
+        >
+            <div
+                class="absolute inset-0 bg-bg/70 backdrop-blur-md border-b border-white/5"
+            ></div>
+            <div class="max-w-6xl mx-auto px-6 relative">
+                <div class="flex items-center justify-between h-16">
+                    <a
+                        href="#"
+                        class="text-xl font-bold text-white flex items-center space-x-2 group"
+                    >
+                        <span class="text-primary font-mono">&lt;DT/&gt;</span>
+                        <span class="group-hover:text-primary transition-colors"
+                            >Dionysis</span
+                        >
+                    </a>
 
-    <!-- Header content -->
-    <div class="relative w-full max-w-4xl mx-auto px-4 pb-16 pt-8 flex flex-col items-center space-y-6">
-      <img
-        src="https://avatars.githubusercontent.com/u/63193630?v=4?size=200"
-        alt="Dionysis Theodosis"
-        class="w-24 h-24 rounded-full ring-4 ring-emerald-dark shadow-xl animate-wave-float"
-      />
-      <div class="text-center">
-        <h1 class="text-3xl font-extrabold text-white">Dionysis Theodosis</h1>
-        <p class="text-green-300 font-medium mt-1">
-          University Student • Java & Web Development Enthusiast
-        </p>
-      </div>
-      <a
-        href="https://github.com/dionysistheodosis"
-  target="_blank"
-  rel="noopener noreferrer"
-  class="relative z-10 inline-flex items-center px-8 py-3 bg-emerald text-white font-semibold rounded-full shadow-md hover:bg-emerald-dark transition"
-      >
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-github w-5 h-5 mr-2"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
-        View My GitHub
-      </a>
-    </div>
-    
-  </div>
+                    <div
+                        class="hidden md:flex items-center space-x-8 text-sm font-medium"
+                    >
+                        <a
+                            href="#about"
+                            class="hover:text-primary transition-colors"
+                            >About</a
+                        >
+                        <a
+                            href="#projects"
+                            class="hover:text-primary transition-colors"
+                            >Projects</a
+                        >
+                        <a
+                            href="#working-on"
+                            class="hover:text-primary transition-colors"
+                            >In Progress</a
+                        >
+                        <a
+                            href="https://github.com/dionysistheodosis"
+                            target="_blank"
+                            class="px-4 py-2 rounded-lg bg-white/5 border border-white/10 hover:bg-white/10 hover:border-primary/50 hover:text-white transition-all flex items-center gap-2"
+                        >
+                            <i data-lucide="github" class="w-4 h-4"></i>
+                            <span>GitHub</span>
+                        </a>
+                    </div>
 
-  <!-- Main Content -->
-  <main class="flex flex-col lg:flex-row lg:space-x-12 max-w-6xl w-full px-6 mt-16 mb-20">
-    <!-- Projects Section -->
-    <section class="lg:flex-1">
-      <div class="text-center mb-8">
-        <h2 class="text-2xl font-bold text-emerald-400">Projects</h2>
-        <div class="mt-2 border-b border-emerald-700 max-w-xs mx-auto"></div>
-      </div>
-      <div class="grid grid-cols-1 gap-8">
-        <article class="bg-white/5 backdrop-blur-md border border-white/10 p-6 rounded-xl shadow-xl hover:scale-[1.02] transition-transform animate-fade-in">
-          <h3 class="text-2xl font-semibold mb-2 flex items-center">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-map mr-2 text-emerald-400">
-              <path d="M14.106 5.553a2 2 0 0 0 1.788 0l3.659-1.83A1 1 0 0 1 21 4.619v12.764a1 1 0 0 1-.553.894l-4.553 2.277a2 2 0 0 1-1.788 0l-4.212-2.106a2 2 0 0 0-1.789 0l-3.659 1.83A1 1 0 0 1 3 19.381V6.618a1 1 0 0 1 .553-.894l4.553-2.277a2 2 0 0 1 1.788 0z"/>
-              <path d="M15 5.764a1 1 0 0 0-.553-.894L9.5 2.472a2 2 0 0 0-1.788 0l-4.553 2.277A1 1 0 0 0 3 6.618V6"/>
-              <path d="M9 22v-8"/>
-              <path d="M9 14V2"/>
-            </svg>
-            Android GPX Tracker
-          </h3>
-          <p class="text-gray-300 mb-4">
-            Android app to upload, store, and visualize hiking routes from GPX files. Tracks real-time paths with Google Maps and Firebase Firestore.
-          </p>
-          <ul class="text-sm text-gray-400 mb-4 list-disc list-inside space-y-1">
-            <li>Kotlin, Android Studio</li>
-            <li>Google Maps API & Firebase Firestore</li>
-            <li>GPX XML parsing & live tracking</li>
-          </ul>
-          <a href="https://github.com/DionysisTheodosis/MyRoutes" target="_blank" class="inline-flex items-center text-emerald-400 hover:text-emerald-600 font-semibold">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-github w-5 h-5 mr-1"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
-            View on GitHub
-          </a>
-        </article>
+                    <button
+                        id="mobile-menu-btn"
+                        class="md:hidden text-slate-300 hover:text-white"
+                    >
+                        <i data-lucide="menu" class="w-6 h-6"></i>
+                    </button>
+                </div>
+            </div>
 
-        <article class="bg-white/5 backdrop-blur-md border border-white/10 p-6 rounded-xl shadow-xl hover:scale-[1.02] transition-transform animate-fade-in">
-          <h3 class="text-2xl font-semibold mb-2 flex items-center">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-stethoscope mr-2 text-emerald-400">
-              <path d="M4.8 2.3A.3.3 0 1 0 5 2H4a2 2 0 0 0-2 2v5a6 6 0 0 0 6 6v0a6 6 0 0 0 6-6V4a2 2 0 0 0-2-2h-1a.2.2 0 1 0 .3.3"/>
-              <path d="M8 15v1a6 6 0 0 0 6 6v0a6 6 0 0 0 6-6v-4"/>
-              <circle cx="20" cy="10" r="2"/>
-            </svg>
-            MedCare - Doctor Appointment Platform
-          </h3>
-          <p class="text-gray-300 mb-4">
-            Full-stack web app for doctor appointments. Patients book, doctors manage schedules, admins oversee. Built with RESTful API and Docker containerization.
-          </p>
-          <a href="https://github.com/DionysisTheodosis/Web-Development-2024" target="_blank" class="inline-flex items-center text-emerald-400 hover:text-emerald-600 font-semibold">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-github w-5 h-5 mr-1"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
-            View on GitHub
-          </a>
-        </article>
+            <div
+                id="mobile-menu"
+                class="hidden md:hidden bg-surface border-b border-white/5 absolute w-full"
+            >
+                <div class="px-6 py-4 space-y-3 flex flex-col">
+                    <a href="#about" class="block py-2 hover:text-primary"
+                        >About</a
+                    >
+                    <a href="#projects" class="block py-2 hover:text-primary"
+                        >Projects</a
+                    >
+                    <a href="#working-on" class="block py-2 hover:text-primary"
+                        >In Progress</a
+                    >
+                    <a
+                        href="https://github.com/dionysistheodosis"
+                        target="_blank"
+                        class="inline-flex items-center gap-2 text-primary"
+                    >
+                        <i data-lucide="github" class="w-4 h-4"></i> GitHub
+                    </a>
+                </div>
+            </div>
+        </nav>
 
-        <article class="bg-white/5 backdrop-blur-md border border-white/10 p-6 rounded-xl shadow-xl hover:scale-[1.02] transition-transform animate-fade-in">
-          <h3 class="text-2xl font-semibold mb-2 flex items-center">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-smartphone mr-2 text-emerald-400">
-              <rect width="14" height="20" x="5" y="2" rx="2" ry="2"/>
-              <path d="M12 18h.01"/>
-            </svg>
-            Mobile Phones Management RESTful Service
-          </h3>
-          <p class="text-gray-300 mb-4">
-            Backend RESTful API for managing mobile phones in an online store. Built with Spring Boot and JPA for full CRUD operations.
-          </p>
-          <a href="https://github.com/DionysisTheodosis/Cloud-Technologies-2025/tree/43df5c92a88ffd3a31d8647ab1737feb3b038e5c/Lab%20Project/mobilemanagement" target="_blank" class="inline-flex items-center text-emerald-400 hover:text-emerald-600 font-semibold">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-github w-5 h-5 mr-1"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
-            View on GitHub
-          </a>
-        </article>
+        <header
+            id="about"
+            class="min-h-screen flex items-center justify-center pt-16 relative"
+        >
+            <div class="text-center px-4 max-w-4xl mx-auto reveal active">
+                <div class="relative inline-block mb-6">
+                    <div
+                        class="absolute inset-0 bg-primary blur-2xl opacity-20 rounded-full"
+                    ></div>
+                    <img
+                        src="https://avatars.githubusercontent.com/u/63193630?v=4?size=200"
+                        alt="Dionysis Theodosis"
+                        class="relative w-32 h-32 md:w-40 md:h-40 rounded-full border-2 border-primary/50 shadow-2xl object-cover mx-auto hover:scale-105 transition-transform duration-500"
+                    />
+                </div>
 
-        <article class="bg-white/5 backdrop-blur-md border border-white/10 p-6 rounded-xl shadow-xl hover:scale-[1.02] transition-transform animate-fade-in">
-          <h3 class="text-2xl font-semibold mb-2 flex items-center">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-wrench mr-2 text-emerald-400">
-              <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
-            </svg>
-            Web Development Full CRUD (Car Repair)
-          </h3>
-          <p class="text-gray-300 mb-4">
-            Full-stack web app for car repair management using Spring Boot backend and Vue.js frontend for complete CRUD functionality.
-          </p>
-          <a href="https://github.com/DionysisTheodosis/Web-Development-2025" target="_blank" class="inline-flex items-center text-emerald-400 hover:text-emerald-600 font-semibold">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-github w-5 h-5 mr-1"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
-            View on GitHub
-          </a>
-        </article>
+                <h1
+                    class="text-4xl md:text-6xl font-extrabold text-white tracking-tight mb-4"
+                >
+                    Hi, I'm
+                    <span
+                        class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-emerald-300"
+                        >Dionysis</span
+                    >
+                </h1>
 
-        <article class="bg-white/5 backdrop-blur-md border border-white/10 p-6 rounded-xl shadow-xl hover:scale-[1.02] transition-transform animate-fade-in">
-          <h3 class="text-2xl font-semibold mb-2 flex items-center">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-music mr-2 text-emerald-400">
-              <path d="M9 18V5l12-2v13"/>
-              <circle cx="6" cy="18" r="3"/>
-              <circle cx="18" cy="16" r="3"/>
-            </svg>
-            Music Festival Management Backend
-          </h3>
-          <p class="text-gray-300 mb-4">
-            Backend system for managing music festivals, performances, and users with RESTful web services and database integration.
-          </p>
-          <a href="https://github.com/DionysisTheodosis/Cloud-Technologies-2025/tree/main/Lab%20Project" target="_blank" class="inline-flex items-center text-emerald-400 hover:text-emerald-600 font-semibold">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-github w-5 h-5 mr-1"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
-            View on GitHub
-          </a>
-        </article>
-      </div>
-    </section>
+                <div
+                    class="text-lg md:text-xl text-slate-400 font-mono h-8 flex justify-center items-center gap-2 mb-8"
+                >
+                    <span class="text-primary">></span>
+                    <span id="typewriter"></span>
+                    <span
+                        class="animate-cursor w-2 h-5 bg-primary block"
+                    ></span>
+                </div>
 
-    <!-- Currently Working On Section -->
-    <section class="lg:flex-1 mt-16 lg:mt-0">
-      <div class="text-center mb-8">
-        <h2 class="text-2xl font-bold text-emerald-400">Currently Working On</h2>
-        <div class="mt-2 border-b border-emerald-700 max-w-xs mx-auto"></div>
-      </div>
-      <div class="space-y-8">
-        <article class="bg-white/5 backdrop-blur-md border border-white/10 p-6 rounded-xl shadow-xl animate-fade-in">
-          <h3 class="text-2xl font-semibold mb-2 flex items-center">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-server mr-2 text-emerald-400">
-              <rect width="20" height="8" x="2" y="2" rx="2" ry="2"/>
-              <rect width="20" height="8" x="2" y="14" rx="2" ry="2"/>
-              <line x1="6" x2="6" y1="6" y2="6"/>
-              <line x1="6" x2="6" y1="18" y2="18"/>
-            </svg>
-            RESTful Mobile Phones Management Service
-          </h3>
-          <p class="text-gray-300 mb-4">
-            Developing the backend REST API for mobile phones store management using Spring Boot and JPA with full CRUD.
-          </p>
-          <a href="https://github.com/DionysisTheodosis/Cloud-Technologies-2025/tree/43df5c92a88ffd3a31d8647ab1737feb3b038e5c/Lab%20Project/mobilemanagement" target="_blank" class="inline-flex items-center text-emerald-400 hover:text-emerald-600 font-semibold">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-github w-5 h-5 mr-1"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
-            Repository
-          </a>
-        </article>
+                <p
+                    class="max-w-xl mx-auto text-slate-400 mb-10 leading-relaxed"
+                >
+                    Passionate about building scalable backend systems and
+                    responsive web applications. Focusing on Spring Boot, Data
+                    REST, and modern Java ecosystems.
+                </p>
 
-        <article class="bg-white/5 backdrop-blur-md border border-white/10 p-6 rounded-xl shadow-xl animate-fade-in">
-          <h3 class="text-2xl font-semibold mb-2 flex items-center">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-car mr-2 text-emerald-400">
-              <path d="M14 16H9m10 0h3v-3.15a1 1 0 0 0-.84-.99L16 11l-2.7-3.6a1 1 0 0 0-.8-.4H5.24a2 2 0 0 0-1.8 1.1l-.8 1.63A6 6 0 0 0 2 12.42V16h2"/>
-              <circle cx="6.5" cy="16.5" r="2.5"/>
-              <circle cx="16.5" cy="16.5" r="2.5"/>
-            </svg>
-            Full CRUD Car Repair Web Application
-          </h3>
-          <p class="text-gray-300 mb-4">
-            Building a full CRUD app for car repair using Spring Boot backend and Vue.js frontend.
-          </p>
-          <a href="https://github.com/DionysisTheodosis/Web-Development-2025" target="_blank" class="inline-flex items-center text-emerald-400 hover:text-emerald-600 font-semibold">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-github w-5 h-5 mr-1"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
-            Repository
-          </a>
-        </article>
+                <div class="flex flex-col sm:flex-row justify-center gap-4">
+                    <a
+                        href="#projects"
+                        class="px-8 py-3 rounded-full bg-primary text-white font-semibold hover:bg-primaryHover hover:shadow-lg hover:shadow-primary/25 transition-all transform hover:-translate-y-1"
+                    >
+                        View Projects
+                    </a>
+                    <a
+                        href="https://github.com/dionysistheodosis"
+                        target="_blank"
+                        class="px-8 py-3 rounded-full bg-surface border border-white/10 hover:border-white/30 text-white font-semibold transition-all transform hover:-translate-y-1"
+                    >
+                        GitHub Profile
+                    </a>
+                </div>
+            </div>
 
-        <article class="bg-white/5 backdrop-blur-md border border-white/10 p-6 rounded-xl shadow-xl animate-fade-in">
-          <h3 class="text-2xl font-semibold mb-2 flex items-center">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-music-2 mr-2 text-emerald-400">
-              <circle cx="8" cy="18" r="4"/>
-              <path d="M12 18V2l7 4"/>
-            </svg>
-            Music Festival Management Backend
-          </h3>
-          <p class="text-gray-300 mb-4">
-            Developing backend services for music festivals and performance scheduling.
-          </p>
-          <a href="https://github.com/DionysisTheodosis/Cloud-Technologies-2025/tree/5fe6946cff719a71187fb469f33b1aab76d8d744/Lab%20Project" target="_blank" class="inline-flex items-center text-emerald-400 hover:text-emerald-600 font-semibold">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-github w-5 h-5 mr-1"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
-            Repository
-          </a>
-        </article>
-      </div>
-    </section>
-  </main>
+            <div
+                class="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce opacity-50"
+            >
+                <i data-lucide="chevron-down" class="w-6 h-6"></i>
+            </div>
+        </header>
 
-  <!-- Initialize Lucide -->
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      lucide.replace();
-    });
-  </script>
-</body>
+        <main class="max-w-6xl mx-auto px-6 pb-20">
+            <section id="projects" class="py-20">
+                <div class="flex items-center gap-4 mb-12 reveal">
+                    <h2 class="text-3xl font-bold text-white">
+                        <span class="text-primary font-mono">01.</span> Projects
+                    </h2>
+                    <div class="h-px bg-white/10 flex-grow"></div>
+                </div>
+
+                <div
+                    class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+                >
+                    <article
+                        class="group relative bg-surface/50 backdrop-blur-sm border border-white/5 rounded-2xl overflow-hidden hover:border-primary/50 transition-all duration-300 hover:-translate-y-2 hover:shadow-xl reveal"
+                    >
+                        <div class="p-6 h-full flex flex-col">
+                            <div class="flex justify-between items-start mb-4">
+                                <div
+                                    class="p-3 bg-primary/10 rounded-lg text-primary"
+                                >
+                                    <i data-lucide="map" class="w-6 h-6"></i>
+                                </div>
+                                <a
+                                    href="https://github.com/DionysisTheodosis/MyRoutes"
+                                    target="_blank"
+                                    class="text-slate-400 hover:text-white transition-colors"
+                                >
+                                    <i
+                                        data-lucide="external-link"
+                                        class="w-5 h-5"
+                                    ></i>
+                                </a>
+                            </div>
+
+                            <h3
+                                class="text-xl font-bold text-slate-100 mb-2 group-hover:text-primary transition-colors"
+                            >
+                                Android GPX Tracker
+                            </h3>
+                            <p class="text-slate-400 text-sm mb-4 flex-grow">
+                                Tracks real-time hiking paths using Google Maps
+                                API. Visualizes routes from GPX files with live
+                                Firestore synchronization.
+                            </p>
+
+                            <div class="flex flex-wrap gap-2 mt-auto">
+                                <span
+                                    class="px-2 py-1 text-xs font-mono text-primary bg-primary/10 rounded"
+                                    >Kotlin</span
+                                >
+                                <span
+                                    class="px-2 py-1 text-xs font-mono text-primary bg-primary/10 rounded"
+                                    >Firebase</span
+                                >
+                                <span
+                                    class="px-2 py-1 text-xs font-mono text-primary bg-primary/10 rounded"
+                                    >Maps API</span
+                                >
+                            </div>
+                        </div>
+                    </article>
+
+                    <article
+                        class="group relative bg-surface/50 backdrop-blur-sm border border-white/5 rounded-2xl overflow-hidden hover:border-primary/50 transition-all duration-300 hover:-translate-y-2 hover:shadow-xl reveal"
+                    >
+                        <div class="p-6 h-full flex flex-col">
+                            <div class="flex justify-between items-start mb-4">
+                                <div
+                                    class="p-3 bg-primary/10 rounded-lg text-primary"
+                                >
+                                    <i
+                                        data-lucide="stethoscope"
+                                        class="w-6 h-6"
+                                    ></i>
+                                </div>
+                                <a
+                                    href="https://github.com/DionysisTheodosis/Web-Development-2024"
+                                    target="_blank"
+                                    class="text-slate-400 hover:text-white transition-colors"
+                                >
+                                    <i
+                                        data-lucide="external-link"
+                                        class="w-5 h-5"
+                                    ></i>
+                                </a>
+                            </div>
+
+                            <h3
+                                class="text-xl font-bold text-slate-100 mb-2 group-hover:text-primary transition-colors"
+                            >
+                                MedCare Platform
+                            </h3>
+                            <p class="text-slate-400 text-sm mb-4 flex-grow">
+                                Full-stack appointment system. Features
+                                role-based access for Doctors, Patients, and
+                                Admins. Containerized for deployment.
+                            </p>
+
+                            <div class="flex flex-wrap gap-2 mt-auto">
+                                <span
+                                    class="px-2 py-1 text-xs font-mono text-primary bg-primary/10 rounded"
+                                    >Java</span
+                                >
+                                <span
+                                    class="px-2 py-1 text-xs font-mono text-primary bg-primary/10 rounded"
+                                    >Docker</span
+                                >
+                                <span
+                                    class="px-2 py-1 text-xs font-mono text-primary bg-primary/10 rounded"
+                                    >Docker Compose</span
+                                >
+                                <span
+                                    class="px-2 py-1 text-xs font-mono text-primary bg-primary/10 rounded"
+                                    >REST</span
+                                >
+                                <span
+                                    class="px-2 py-1 text-xs font-mono text-primary bg-primary/10 rounded"
+                                    >MySQL</span
+                                >
+                            </div>
+                        </div>
+                    </article>
+
+                    <article
+                        class="group relative bg-surface/50 backdrop-blur-sm border border-white/5 rounded-2xl overflow-hidden hover:border-primary/50 transition-all duration-300 hover:-translate-y-2 hover:shadow-xl reveal"
+                    >
+                        <div class="p-6 h-full flex flex-col">
+                            <div class="flex justify-between items-start mb-4">
+                                <div
+                                    class="p-3 bg-primary/10 rounded-lg text-primary"
+                                >
+                                    <i
+                                        data-lucide="smartphone"
+                                        class="w-6 h-6"
+                                    ></i>
+                                </div>
+                                <a
+                                    href="https://github.com/DionysisTheodosis/Cloud-Technologies-2025/tree/43df5c92a88ffd3a31d8647ab1737feb3b038e5c/Lab%20Project/mobilemanagement"
+                                    target="_blank"
+                                    class="text-slate-400 hover:text-white transition-colors"
+                                >
+                                    <i
+                                        data-lucide="external-link"
+                                        class="w-5 h-5"
+                                    ></i>
+                                </a>
+                            </div>
+
+                            <h3
+                                class="text-xl font-bold text-slate-100 mb-2 group-hover:text-primary transition-colors"
+                            >
+                                Mobile Store Service
+                            </h3>
+                            <p class="text-slate-400 text-sm mb-4 flex-grow">
+                                Backend RESTful service for managing mobile
+                                phone inventory. Leverages Spring Data REST for
+                                rapid API development.
+                            </p>
+
+                            <div class="flex flex-wrap gap-2 mt-auto">
+                                <span
+                                    class="px-2 py-1 text-xs font-mono text-primary bg-primary/10 rounded"
+                                    >Data REST</span
+                                >
+                                <span
+                                    class="px-2 py-1 text-xs font-mono text-primary bg-primary/10 rounded"
+                                    >MySQL</span
+                                >
+                                <span
+                                    class="px-2 py-1 text-xs font-mono text-primary bg-primary/10 rounded"
+                                    >Spring Boot</span
+                                >
+                                <span
+                                    class="px-2 py-1 text-xs font-mono text-primary bg-primary/10 rounded"
+                                    >Bash</span
+                                >
+                                <span
+                                    class="px-2 py-1 text-xs font-mono text-primary bg-primary/10 rounded"
+                                    >Docker</span
+                                >
+                                <span
+                                    class="px-2 py-1 text-xs font-mono text-primary bg-primary/10 rounded"
+                                    >Docker Compose</span
+                                >
+                                <span
+                                    class="px-2 py-1 text-xs font-mono text-primary bg-primary/10 rounded"
+                                    >Kubernetes</span
+                                >
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </section>
+
+            <section id="working-on" class="py-10">
+                <div class="flex items-center gap-4 mb-12 reveal">
+                    <h2 class="text-3xl font-bold text-white">
+                        <span class="text-primary font-mono">02.</span> In
+                        Progress
+                    </h2>
+                    <div class="h-px bg-white/10 flex-grow"></div>
+                </div>
+
+                <div class="grid grid-cols-1 gap-6">
+                    <div
+                        class="bg-gradient-to-br from-primary/30 to-bg border border-primary/20 p-1 rounded-2xl reveal w-full md:w-2/3 mx-auto"
+                    >
+                        <div
+                            class="bg-bg h-full rounded-xl p-8 relative overflow-hidden group"
+                        >
+                            <div
+                                class="absolute top-0 right-0 p-2 bg-primary/10 text-primary rounded-bl-xl text-xs font-mono border-l border-b border-primary/20 flex items-center gap-2"
+                            >
+                                <span class="relative flex h-2 w-2">
+                                    <span
+                                        class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"
+                                    ></span>
+                                    <span
+                                        class="relative inline-flex rounded-full h-2 w-2 bg-primary"
+                                    ></span>
+                                </span>
+                                Active Focus
+                            </div>
+                            <div class="flex items-center gap-4 mb-6">
+                                <div
+                                    class="p-3 bg-surface rounded-full border border-white/5"
+                                >
+                                    <i
+                                        data-lucide="wrench"
+                                        class="text-primary w-8 h-8"
+                                    ></i>
+                                </div>
+                                <div>
+                                    <h3 class="text-2xl font-bold text-white">
+                                        Car Repair Web App
+                                    </h3>
+                                    <p class="text-primary text-sm font-mono">
+                                        Full Stack Development
+                                    </p>
+                                </div>
+                            </div>
+                            <p class="text-slate-300 mb-6 leading-relaxed">
+                                Currently building the full CRUD functionality
+                                for a car repair management system. Implementing
+                                complex service scheduling, customer management,
+                                and repair tracking.
+                            </p>
+
+                            <a
+                                href="https://github.com/DionysisTheodosis/Web-Development-2025"
+                                target="_blank"
+                                class="inline-flex items-center gap-2 text-primary hover:text-primaryHover font-medium mb-6 transition-colors"
+                            >
+                                <i data-lucide="github" class="w-4 h-4"></i>
+                                <span>View Repository</span>
+                                <i
+                                    data-lucide="arrow-right"
+                                    class="w-4 h-4"
+                                ></i>
+                            </a>
+
+                            <div class="flex flex-wrap gap-2 mb-6">
+                                <span
+                                    class="px-3 py-1 text-xs font-mono border border-white/10 rounded-full text-slate-400"
+                                    >Spring Boot</span
+                                >
+                                <span
+                                    class="px-3 py-1 text-xs font-mono border border-white/10 rounded-full text-slate-400"
+                                    >MySQL</span
+                                >
+                                <span
+                                    class="px-3 py-1 text-xs font-mono border border-white/10 rounded-full text-slate-400"
+                                    >Vue.js</span
+                                >
+                                <span
+                                    class="px-3 py-1 text-xs font-mono border border-white/10 rounded-full text-slate-400"
+                                    >Docker Compose</span
+                                >
+                            </div>
+
+                            <div
+                                class="w-full bg-surface rounded-full h-2 mb-2"
+                            >
+                                <div
+                                    class="bg-primary h-2 rounded-full relative overflow-hidden"
+                                    style="width: 25%"
+                                >
+                                    <div
+                                        class="absolute inset-0 bg-white/20 animate-[shimmer_2s_infinite]"
+                                    ></div>
+                                </div>
+                            </div>
+                            <p
+                                class="text-right text-xs text-slate-500 font-mono"
+                            >
+                                25% Complete
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer
+            class="border-t border-white/5 bg-bg/50 backdrop-blur-sm py-8 text-center text-sm text-slate-500"
+        >
+            <div
+                class="max-w-6xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-4"
+            >
+                <p>&copy; 2025 Dionysis Theodosis. Built with Tailwind CSS.</p>
+                <div class="flex gap-6">
+                    <a
+                        href="https://github.com/dionysistheodosis"
+                        class="hover:text-primary transition-colors"
+                        ><i data-lucide="github" class="w-5 h-5"></i
+                    ></a>
+                    <a
+                        href="mailto:theo_187@hotmail.com"
+                        class="hover:text-primary transition-colors"
+                        ><i data-lucide="mail" class="w-5 h-5"></i
+                    ></a>
+                </div>
+            </div>
+        </footer>
+
+        <script>
+            // Initialize Icons
+            lucide.createIcons();
+
+            // Mobile Menu Toggle
+            const btn = document.getElementById("mobile-menu-btn");
+            const menu = document.getElementById("mobile-menu");
+
+            btn.addEventListener("click", () => {
+                menu.classList.toggle("hidden");
+            });
+
+            // Typewriter Effect
+            const textElement = document.getElementById("typewriter");
+            const phrases = [
+                "University Student",
+                "Java Developer",
+                "Web Enthusiast",
+            ];
+            let phraseIndex = 0;
+            let charIndex = 0;
+            let isDeleting = false;
+
+            function type() {
+                const currentPhrase = phrases[phraseIndex];
+
+                if (isDeleting) {
+                    textElement.textContent = currentPhrase.substring(
+                        0,
+                        charIndex - 1,
+                    );
+                    charIndex--;
+                } else {
+                    textElement.textContent = currentPhrase.substring(
+                        0,
+                        charIndex + 1,
+                    );
+                    charIndex++;
+                }
+
+                if (!isDeleting && charIndex === currentPhrase.length) {
+                    isDeleting = true;
+                    setTimeout(type, 2000); // Pause at end
+                } else if (isDeleting && charIndex === 0) {
+                    isDeleting = false;
+                    phraseIndex = (phraseIndex + 1) % phrases.length;
+                    setTimeout(type, 500); // Pause before new word
+                } else {
+                    setTimeout(type, isDeleting ? 50 : 100);
+                }
+            }
+
+            document.addEventListener("DOMContentLoaded", type);
+
+            // Scroll Reveal Animation
+            const observerOptions = {
+                root: null,
+                rootMargin: "0px",
+                threshold: 0.1,
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add("active");
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll(".reveal").forEach((el) => {
+                observer.observe(el);
+            });
+        </script>
+    </body>
 </html>
