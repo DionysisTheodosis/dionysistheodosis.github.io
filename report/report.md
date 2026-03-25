@@ -1,52 +1,25 @@
-# Security Analysis of Popular Android "Tools & Utilities" Applications
+# Βγάζοντας τη γάτα από τον σάκο: Δημοφιλείς Android Εφαρμογές υπό το Πρίσμα της Ασφάλειας
 
-## Static Analysis Report — Mobile and Wireless Networks Security (2025-2026)
+## 1. Περίληψη (Abstract)
 
----
+Η παρούσα αναφορά παρουσιάζει μια ολοκληρωμένη αξιολόγηση ασφαλείας **12 δημοφιλών εφαρμογών Android**. Ακολουθώντας τη μεθοδολογία των Chatzoglou et al. στο άρθρο "Let the Cat out of the Bag: Popular Android IoT Apps under Security Scrutiny", πραγματοποιούμε στατική ανάλυση χρησιμοποιώντας το Mobile Security Framework (MobSF). Η ανάλυσή μας εκτείνεται σε πολλούς άξονες, συμπεριλαμβανομένων των ευαίσθητων δικαιωμάτων (permissions), των αδυναμιών κώδικα (CWEs), των σφαλμάτων διαμόρφωσης ασφάλειας δικτύου, των ευπαθειών στο manifest, των ενσωματωμένων μυστικών, της χρήσης trackers (ιχνηλατών) και της ανάλυσης δυαδικών αρχείων των κοινόχρηστων βιβλιοθηκών.
 
-## 1. Abstract
-
-This report presents a comprehensive security evaluation of 10 popular Android applications belonging to the **Tools & Utilities** category. Following the methodology set forth by Chatzoglou et al. in "Let the Cat out of the Bag: Popular Android IoT Apps under Security Scrutiny" (Sensors, MDPI, 2022), we perform static analysis using the Mobile Security Framework (MobSF) v4.3.1. Our analysis spans multiple axes including sensitive permissions, code weaknesses (CWEs), network security misconfigurations, manifest vulnerabilities, hardcoded secrets, tracker analysis, and shared library binary analysis.
-
-The results reveal that even chart-topping, widely-used utility applications exhibit significant security and privacy concerns, including the use of weak cryptographic algorithms, cleartext data storage, excessive permissions, and hardcoded secrets. These findings underscore the prevalence of "technical debt" — the long-term cost of choosing quick solutions over secure implementations.
+Τα αποτελέσματα αποκαλύπτουν ότι ακόμη και ευρέως χρησιμοποιούμενες εφαρμογές εμφανίζουν σημαντικά κενά ασφάλειας και προστασίας προσωπικών δεδομένων.
 
 ---
 
-## 2. Methodology
+## 2. Μεθοδολογία (Methodology)
 
-### 2.1 App Selection
-
-We selected 10 of the most downloaded applications from the **Tools & Utilities** category on the Google Play Store. The selection criteria were:
-1. Apps must belong to the Tools & Utilities category
-2. Apps must have a significant number of downloads (>1M)
-3. Apps should represent a diverse set of functionalities within the category
-
-### 2.2 Analysis Environment
-
-- **Static Analysis Tool:** Mobile Security Framework (MobSF) v4.3.1
-- **Analysis Type:** Automated static analysis of APK files
-- **Key Analysis Components:**
-  - Manifest analysis and permission mapping
-  - Code analysis for Common Weakness Enumerations (CWEs)
-  - Network security configuration analysis
-  - Certificate and APK signing analysis
-  - Tracker detection (via Exodus Privacy)
-  - Shared library binary analysis
-  - Hardcoded secrets detection
-
-### 2.3 Data Collection
-
-Each APK was uploaded to MobSF for automated static analysis. The resulting reports were extracted via the MobSF REST API and processed programmatically to construct the comparative tables and visualizations presented in this report.
+Επιλέξαμε 12 δημοφιλείς εφαρμογές για ανάλυση. Το περιβάλλον ανάλυσης βασίστηκε στο Mobile Security Framework (MobSF) για την αυτοματοποιημένη στατική ανάλυση των αρχείων APK.
 
 ---
 
-## 3. Results
+## 3. Αποτελέσματα (Results)
 
-### 3.1 App Overview
+### 3.1 Επισκόπηση Εφαρμογών
+### Πίνακας 1: Επισκόπηση Εξεταζόμενων Εφαρμογών Android
 
-### Table 1: Overview of Examined Android Applications
-
-| # | App Name | Package Name | Version | Size | Downloads | Score |
+| Α/Α | Όνομα Εφαρμογής | Όνομα Πακέτου | Έκδοση | Μέγεθος | Λήψεις | Βαθμολογία |
 |---|----------|-------------|---------|------|-----------|-------|
 | 1 | Calculator | `com.sec.android.app.popupcalculator` | 12.5.00.24 | 6.04MB | 1,000,000,000+ | 4.5 |
 | 2 | Calendar | `com.samsung.android.calendar` | 12.7.03.1 | 54.91MB | 1,000,000,000+ | 4.0 |
@@ -58,38 +31,43 @@ Each APK was uploaded to MobSF for automated static analysis. The resulting repo
 | 8 | SHAREit | `com.lenovo.anyshare.gps` | 6.26.68_ww | 65.43MB | 1,000,000,000+ | 4.3 |
 | 9 | Authenticator | `com.google.android.apps.authenticator2` | 7.0 | 9.06MB | 100,000,000+ | 3.9 |
 | 10 | RAR | `com.rarlab.rar` | 7.20.build131 | 3.56MB | 100,000,000+ | 4.2 |
+| 11 | CCleaner | `com.piriform.ccleaner` | 26.03.0 | 46.58MB | 100,000,000+ | 4.6 |
+| 12 | Turbo VPN | `free.vpn.unblock.proxy.turbovpn` | 4.2.9.7 | 52.97MB | 100,000,000+ | 4.7 |
 
 
-### 3.2 High-Level Static Analysis: Permissions
+### 3.2 Στατική Ανάλυση Υψηλού Επιπέδου: Δικαιώματα (Permissions)
+Αναγνώριση των επικίνδυνων δικαιωμάτων.
+### Πίνακας 2: Εντοπισμένα Επικίνδυνα Δικαιώματα (Permissions) ανά Εφαρμογή
 
-The identification and study of the runtime (dangerous) permissions used by each app is the first step towards understanding its behavior from a privacy viewpoint. Dangerous permissions are grouped into six categories: **Utility**, **Authentication**, **Location**, **Storage**, **Phone**, and **Communication**, following the methodology of the reference paper.
+| Εφαρμογή | U1 | U2 | A1 | A2 | A3 | A4 | L1 | L2 | L3 | L4 | S1 | S2 | S3 | P1 | P2 | P3 | P6 | P7 | P9 | P10 | Σύνολο |
+|-----|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|-------|
+| Calculator |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | ✓ |  |  | **1** |
+| Calendar |  |  |  |  |  |  | ✓ | ✓ |  | ✓ | ✓ | ✓ |  |  |  | ✓ | ✓ |  | ✓ | ✓ | **9** |
+| QR & Barcode Scanner | ✓ |  |  |  |  |  |  |  |  |  | ✓ | ✓ |  |  |  |  |  |  |  |  | **3** |
+| ZArchiver |  |  |  |  |  |  |  |  |  |  | ✓ | ✓ | ✓ |  |  |  |  |  |  |  | **3** |
+| Translate |  | ✓ |  |  |  |  |  |  |  |  |  | ✓ |  |  | ✓ |  |  |  |  |  | **3** |
+| Speedtest | ✓ |  |  |  |  |  | ✓ | ✓ | ✓ |  | ✓ | ✓ |  | ✓ |  |  |  |  |  |  | **7** |
+| Gboard | ✓ | ✓ |  |  | ✓ |  |  |  |  |  | ✓ |  |  |  |  | ✓ |  |  |  |  | **5** |
+| SHAREit | ✓ |  |  |  |  |  | ✓ | ✓ |  |  | ✓ | ✓ | ✓ |  | ✓ | ✓ | ✓ |  | ✓ |  | **10** |
+| Authenticator | ✓ |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | **1** |
+| RAR |  |  |  |  |  |  |  |  |  |  |  | ✓ | ✓ |  |  |  |  |  |  |  | **2** |
+| CCleaner |  |  | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |  |  | ✓ | ✓ |  | ✓ |  |  | ✓ |  |  |  | **10** |
+| Turbo VPN | ✓ |  |  |  |  |  |  |  |  |  | ✓ |  |  |  |  |  |  |  |  |  | **2** |
+| **ΣΥΝΟΛΟ** | 6 | 2 | 1 | 1 | 2 | 1 | 4 | 4 | 1 | 1 | 8 | 8 | 3 | 2 | 2 | 3 | 3 | 1 | 2 | 1 | |
 
-### Table 2: Identified Dangerous Permissions per Examined App
-
-| App | U1 | U2 | A3 | L1 | L2 | L3 | L4 | S1 | S2 | S3 | P1 | P2 | P3 | P6 | P7 | P9 | P10 | Total |
-|-----|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|-------|
-| Calculator |  |  |  |  |  |  |  |  |  |  |  |  |  |  | ✓ |  |  | **1** |
-| Calendar |  |  |  | ✓ | ✓ |  | ✓ | ✓ | ✓ |  |  |  | ✓ | ✓ |  | ✓ | ✓ | **9** |
-| QR & Barcode Scanner | ✓ |  |  |  |  |  |  | ✓ | ✓ |  |  |  |  |  |  |  |  | **3** |
-| ZArchiver |  |  |  |  |  |  |  | ✓ | ✓ | ✓ |  |  |  |  |  |  |  | **3** |
-| Translate |  | ✓ |  |  |  |  |  |  | ✓ |  |  | ✓ |  |  |  |  |  | **3** |
-| Speedtest | ✓ |  |  | ✓ | ✓ | ✓ |  | ✓ | ✓ |  | ✓ |  |  |  |  |  |  | **7** |
-| Gboard | ✓ | ✓ | ✓ |  |  |  |  | ✓ |  |  |  |  | ✓ |  |  |  |  | **5** |
-| SHAREit | ✓ |  |  | ✓ | ✓ |  |  | ✓ | ✓ | ✓ |  | ✓ | ✓ | ✓ |  | ✓ |  | **10** |
-| Authenticator | ✓ |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | **1** |
-| RAR |  |  |  |  |  |  |  |  | ✓ | ✓ |  |  |  |  |  |  |  | **2** |
-| **TOTAL** | 5 | 2 | 1 | 3 | 3 | 1 | 1 | 6 | 7 | 3 | 1 | 2 | 3 | 2 | 1 | 2 | 1 | |
-
-**Permission Legend:**
-- **U1**: CAMERA
-- **U2**: RECORD_AUDIO
+**Υπόμνημα Δικαιωμάτων:**
+- **U1**: CAMERA (Κάμερα)
+- **U2**: RECORD_AUDIO (Ήχος)
+- **A1**: USE_CREDENTIALS
+- **A2**: AUTHENTICATE_ACCOUNTS
 - **A3**: GET_ACCOUNTS
-- **L1**: ACCESS_FINE_LOCATION
+- **A4**: MANAGE_ACCOUNTS
+- **L1**: ACCESS_FINE_LOCATION (Ακριβής Τοποθεσία)
 - **L2**: ACCESS_COARSE_LOCATION
 - **L3**: ACCESS_BACKGROUND_LOCATION
 - **L4**: ACCESS_MEDIA_LOCATION
-- **S1**: READ_EXTERNAL_STORAGE
-- **S2**: WRITE_EXTERNAL_STORAGE
+- **S1**: READ_EXTERNAL_STORAGE (Ανάγνωση Αποθ.)
+- **S2**: WRITE_EXTERNAL_STORAGE (Εγγραφή Αποθ.)
 - **S3**: REQUEST_INSTALL_PACKAGES
 - **P1**: READ_PHONE_STATE
 - **P2**: SYSTEM_ALERT_WINDOW
@@ -99,25 +77,11 @@ The identification and study of the runtime (dangerous) permissions used by each
 - **P9**: READ_CALENDAR
 - **P10**: WRITE_CALENDAR
 
+### 3.3 Στατική Ανάλυση Χαμηλού Επιπέδου: Αδυναμίες Κώδικα (CWEs)
+Βαθύτερη ανάλυση για ευπάθειες Janus, διαμόρφωση δικτύου και αδυναμίες కώδικα.
+### Πίνακας 3: Εντοπισμένες Αδυναμίες και Θέματα Ασφάλειας ανά Εφαρμογή
 
-#### Permissions Discussion
-
-The analysis of dangerous permissions across the 10 examined apps reveals a total of **44 dangerous permission requests**. On average, each app requests **4.4 dangerous permissions**. The most permission-heavy app is **SHAREit** with 10 dangerous permissions, while **Calculator** requests the fewest with 1.
-
-From a category perspective:
-- **Location permissions** (L1/L2) are requested by **3** out of 10 apps (30%), which may or may not be justified depending on the app's functionality.
-- **Storage permissions** (S1/S2) are present in **8** apps (80%), a common pattern for utility apps that handle files.
-- **Camera access** (U1) is requested by **5** apps (50%).
-
-As a general principle, the number of runtime permissions an app requests must be reduced to the bare minimum. By restricting access to dangerous permissions, the risk of inadvertently misusing them is reduced, and the app's attack surface is substantially decreased.
-
-### 3.3 Low-Level Static Analysis: Code Weaknesses and Security Issues
-
-To further investigate each app, we performed deep static analysis using MobSF, concentrating on Janus vulnerabilities, network security misconfigurations, APK signing algorithms, and Common Weakness Enumerations (CWEs).
-
-### Table 3: Identified Weaknesses and Security Issues per App
-
-| App | Janus | Net. Sec. | APK Sign | CWE-89 | CWE-250 | CWE-276 | CWE-295 | CWE-312 | CWE-327 | CWE-330 | CWE-532 | CWE-649 | CWE-749 | CWE-919 | Secrets | Score |
+| Εφαρμογή | Janus | Ασφάλεια Δικτ. | APK Υπογρ. | CWE-89 | CWE-250 | CWE-276 | CWE-295 | CWE-312 | CWE-327 | CWE-330 | CWE-532 | CWE-649 | CWE-749 | CWE-919 | Μυστικά | Βαθμ. |
 |-----|-------|-----------|----------|---|---|---|---|---|---|---|---|---|---|---|---------|-------|
 | Calculator |  |  | SHA512 | ✓ |  | ✓ |  | ✓ | ✓ | ✓ | ✓ | ✓ |  |  | 2 | 52 |
 | Calendar |  | ⊠, ⊞ | SHA512 | ✓ |  | ✓ |  | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | 224 | 47 |
@@ -129,58 +93,34 @@ To further investigate each app, we performed deep static analysis using MobSF, 
 | SHAREit | ✓ | ⊠ | SHA512 | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |  | ✓ | ✓ | 844 | 47 |
 | Authenticator | ✓ |  | SHA512 | ✓ |  | ✓ |  | ✓ | ✓ | ✓ | ✓ | ✓ |  |  | 499 | 49 |
 | RAR | ✓ |  | SHA512 | ✓ |  | ✓ |  | ✓ | ✓ | ✓ | ✓ |  |  |  | 3 | 51 |
-| **TOTAL** | 4 | | | 10 | 2 | 10 | 1 | 10 | 10 | 9 | 10 | 3 | 4 | 3 | | |
+| CCleaner |  |  | SHA512 | ✓ |  | ✓ |  | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | 4303 | 46 |
+| Turbo VPN | ✓ |  | SHA512 | ✓ |  | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |  | 273 | 45 |
 
-**Network Security symbols:** ● = cleartext traffic to all domains, ◎ = cleartext for specific domains, ⊠ = trusts system certificates, ⊞ = trusts user certificates, ⊡ = bypasses certificate pinning
+**Σύμβολα Ασφάλειας Δικτύου:** ● = απλό κείμενο (cleartext) σε όλους τους τομείς, ◎ = απλό κείμενο σε συγκεκριμένους τομείς, ⊠ = εμπιστεύεται πιστοποιητικά συστήματος, ⊞ = εμπιστεύεται πιστοποιητικά χρήστη, ⊡ = παρακάμπτει το certificate pinning
 
+### 3.4 Ανάλυση Tracker (Tracker Analysis)
+### Πίνακας 6: Εντοπισμένοι Ιχνηλάτες (Trackers) ανά Εφαρμογή
 
-#### CWE Analysis Discussion
-
-- **CWE-89** (SQL Injection): Detected in **10** apps (100%)
-- **CWE-250** (Exec. w/ Unnec. Privileges): Detected in **2** apps (20%)
-- **CWE-276** (Incorrect Default Perms): Detected in **10** apps (100%)
-- **CWE-295** (Improper Cert Validation): Detected in **1** apps (10%)
-- **CWE-312** (Cleartext Storage): Detected in **10** apps (100%)
-- **CWE-327** (Broken/Risky Crypto): Detected in **10** apps (100%)
-- **CWE-330** (Insufficient Randomness): Detected in **9** apps (90%)
-- **CWE-532** (Info Leak into Log File): Detected in **10** apps (100%)
-- **CWE-649** (Encryption w/o Integrity): Detected in **3** apps (30%)
-- **CWE-749** (Exposed Dangerous Method): Detected in **4** apps (40%)
-- **CWE-919** (Mobile App Weaknesses): Detected in **3** apps (30%)
-
-Regarding **Janus vulnerability** (CVE-2017-13156), 4 out of 10 apps (40%) were found to be potentially vulnerable. This vulnerability can be exploited when the v1 signature scheme is used with Android API 21-25.
-
-Concerning **APK signing**, 0 apps were found to use SHA-1 for signing, which has been deprecated by NIST since 2013. Apps signed with deprecated algorithms are prone to collision attacks and potential hijacking.
-
-### 3.4 Tracker Analysis
-
-Third-party trackers may be embedded in apps and can pose privacy concerns. Using MobSF's Exodus-Privacy integration, we identified the trackers present in each app.
-
-### Table 6: Detected Trackers per App
-
-| App | Trackers Count | Tracker Names |
+| Εφαρμογή | Πλήθος Trackers | Ονόματα Trackers |
 |-----|---------------|---------------|
 | Calculator | 0 |  |
 | Calendar | 0 |  |
 | QR & Barcode Scanner | 3 | Facebook Ads, Google AdMob, Google Firebase Analytics |
 | ZArchiver | 0 |  |
 | Translate | 0 |  |
-| Speedtest | 10 | Amazon Advertisement, Amazon Mobile Analytics (Amplify), ComScore, Google AdMob, Google Analytics (+5 more) |
+| Speedtest | 10 | Amazon Advertisement, Amazon Mobile Analytics (Amplify), ComScore, Google AdMob, Google Analytics (+5 ακόμα) |
 | Gboard | 0 |  |
-| SHAREit | 14 | Adjust, AppMonet, Facebook Analytics, Facebook Login, Google AdMob (+9 more) |
+| SHAREit | 14 | Adjust, AppMonet, Facebook Analytics, Facebook Login, Google AdMob (+9 ακόμα) |
 | Authenticator | 0 |  |
 | RAR | 0 |  |
+| CCleaner | 10 | AppLovin (MAX and SparkLabs), Facebook Ads, Google AdMob, Google CrashLytics, Google Firebase Analytics (+5 ακόμα) |
+| Turbo VPN | 11 | Adjust, AppMonet, ChartBoost, Google AdMob, Google CrashLytics (+6 ακόμα) |
 
 
-A total of **27 trackers** were detected across all examined apps. **3** out of 10 apps (30%) contain at least one tracker. The presence of trackers, particularly Analytics and Marketing types, raises privacy concerns as they may collect and transmit user data without explicit consent.
+### 3.5 Ανάλυση Manifest (Manifest Analysis)
+### Πίνακας 4: Αποτελέσματα Ανάλυσης Manifest ανά Εφαρμογή
 
-### 3.5 Manifest Analysis
-
-The manifest file of each app was analyzed for potential security issues including exported components, cleartext traffic flags, backup settings, and other misconfigurations.
-
-### Table 4: Manifest Analysis Results per App
-
-| App | Exp. Activities | Exp. Services | Exp. Receivers | Exp. Providers | Cleartext | Backup | Debuggable | High Issues | Warn Issues |
+| Εφαρμογή | Εξαγ. Δραστ. | Εξαγ. Υπηρ. | Εξαγ. Δέκτες | Εξαγ. Πάροχοι | Cleartext | Backup | Αποσφαλμ. | Υψηλ. Κινδ. | Προειδοπ. |
 |-----|----------------|--------------|---------------|---------------|-----------|--------|------------|-------------|-------------|
 | Calculator | 0 | 2 | 3 | 1 | ✓ | ✓ |  | 1 | 7 |
 | Calendar | 19 | 7 | 28 | 15 | ✓ |  |  | 1 | 71 |
@@ -192,19 +132,14 @@ The manifest file of each app was analyzed for potential security issues includi
 | SHAREit | 48 | 4 | 11 | 9 | ✓ |  |  | 2 | 142 |
 | Authenticator | 1 | 1 | 5 | 0 |  |  |  | 1 | 7 |
 | RAR | 0 | 1 | 2 | 0 |  | ✓ |  | 1 | 4 |
+| CCleaner | 10 | 7 | 8 | 0 |  |  |  | 0 | 26 |
+| Turbo VPN | 2 | 2 | 4 | 1 |  |  |  | 1 | 9 |
 
 
-**Key Manifest Findings:**
-- **4** apps permit cleartext traffic, which may jeopardize user privacy or leak credentials.
-- **6** apps have backup functionality enabled via ADB, which could allow data extraction with physical access.
+### 3.6 Ανάλυση Δυαδικών Αρχείων (Binary Analysis)
+### Πίνακας 5: Θέματα Ασφάλειας Δυαδικών Αρχείων (Shared Libraries)
 
-### 3.6 Binary Analysis
-
-Shared libraries (.so files) used by the apps were analyzed for code hardening mechanisms. Missing protections can render apps vulnerable to buffer overflows and other memory corruption attacks.
-
-### Table 5: Shared Library Binary Analysis Issues per App
-
-| App | Total Libs | NX Missing | Canary Missing | RELRO Missing | Fortify Missing | Not Stripped |
+| Εφαρμογή | Σύνολο Libs | Απουσία NX | Απουσία Canary | Απουσία RELRO | Απουσία Fortify | Όχι Stripped |
 |-----|-----------|------------|---------------|--------------|----------------|-------------|
 | Calculator | 4 | 0 | 0 | 0 | 4 | 0 |
 | Calendar | 96 | 0 | 8 | 2 | 64 | 0 |
@@ -216,70 +151,26 @@ Shared libraries (.so files) used by the apps were analyzed for code hardening m
 | SHAREit | 4 | 0 | 0 | 0 | 4 | 0 |
 | Authenticator | 0 | 0 | 0 | 0 | 0 | 0 |
 | RAR | 0 | 0 | 0 | 0 | 0 | 0 |
+| CCleaner | 0 | 0 | 0 | 0 | 0 | 0 |
+| Turbo VPN | 0 | 0 | 0 | 0 | 0 | 0 |
 
-
-A total of **196 shared libraries** were identified across all apps. Of these:
-- **128** libraries lack FORTIFY protection (buffer overflow checks)
-- **18** libraries miss Stack Canary protection
-
-### 3.7 Hardcoded Secrets
-
-Hardcoded secrets, including API keys, tokens, and credentials, were detected in the source code of the examined apps.
-
-| App | Hardcoded Secrets Count |
-|-----|------------------------|
-| Calculator | 2 |
-| Calendar | 224 |
-| QR & Barcode Scanner | 4189 |
-| ZArchiver | 125 |
-| Translate | 50 |
-| Speedtest | 218 |
-| Gboard | 132 |
-| SHAREit | 844 |
-| Authenticator | 499 |
-| RAR | 3 |
-
-A total of **6286 potential hardcoded secrets** were identified across all apps. **10** out of 10 apps contain at least one hardcoded secret. This practice is particularly dangerous as it can expose API keys, authentication tokens, and other sensitive data to anyone who decompiles the app.
+### 3.7 Ενσωματωμένα Μυστικά (Hardcoded Secrets)
+Εντοπίστηκαν 10862 συνολικά ενσωματωμένα μυστικά σε όλες τις εφαρμογές.
 
 ---
 
-## 4. Discussion & Insights
-
-### 4.1 Are Popular Apps Safer?
-
-Our analysis reveals that **popularity does not correlate with better security**. Even apps with hundreds of millions of downloads exhibit fundamental security weaknesses. The average MobSF security score across the examined apps is **50.1/100**, indicating significant room for improvement.
-
-### 4.2 Technical Debt
-
-The findings demonstrate that many popular apps carry substantial "technical debt" — the long-term cost of choosing easy or fast solutions over more secure approaches. This manifests as:
-
-1. **Use of deprecated cryptographic algorithms** (SHA-1 for signing)
-2. **Excessive permission requests** beyond what functionality requires
-3. **Cleartext storage of sensitive information** in logs and code
-4. **Missing code hardening measures** in shared libraries
-5. **Hardcoded secrets** that should be stored securely
-
-### 4.3 Key Takeaways
-
-1. **Permissions over-provisioning** remains a prevalent issue. Apps request more permissions than needed for their core functionality, increasing the attack surface.
-2. **CWE-312 (Cleartext Storage)** and **CWE-532 (Log Information Leakage)** are nearly universal, appearing in the majority of examined apps.
-3. **Network security misconfigurations** are common, with several apps allowing cleartext traffic.
-4. **Developer awareness** of security best practices appears insufficient, as basic protections like FORTIFY and proper certificate validation are frequently absent.
+## 4. Συζήτηση & Συμπεράσματα (Discussion & Insights)
+Η ανάλυση επιβεβαιώνει ότι οι δημοφιλείς εφαρμογές δεν είναι απαραίτητα πιο ασφαλείς. Τα περιστατικά υπερχρήσης δικαιωμάτων επισκιάζουν τις πραγματικές ανάγκες της εφαρμογής, ενώ η αποθήκευση δεδομένων σε απλό κείμενο παραμένει ένα συχνό φαινόμενο.
 
 ---
 
-## 5. Conclusion
-
-This study demonstrates that popular Android utility applications exhibit a range of security and privacy issues. The results largely align with the findings of Chatzoglou et al., confirming that the general tendency in the Android ecosystem leans towards insufficient security measures. App developers must adopt a security-by-design mindset, following the principle of minimal privilege and implementing proper code hardening, secure storage, and up-to-date cryptographic practices.
+## 5. Τελικό Συμπέρασμα (Conclusion)
+Οι σύγχρονες εφαρμογές Android συχνά θυσιάζουν την ασφάλεια (security by design) και την προστασία των προσωπικών δεδομένων (privacy by design) προς χάριν της λειτουργικότητας.
 
 ---
 
-## 6. References
-
+## 6. Βιβλιογραφία (References)
 1. Chatzoglou, E.; Kambourakis, G.; Smiliotopoulos, C. *Let the Cat out of the Bag: Popular Android IoT Apps under Security Scrutiny.* Sensors 2022, 22, 513. https://doi.org/10.3390/s22020513
-2. OWASP Mobile Security Testing Guide. https://owasp.org/www-project-mobile-security-testing-guide/
-3. MobSF (Mobile Security Framework). https://github.com/MobSF/Mobile-Security-Framework-MobSF
-4. Exodus Privacy. https://exodus-privacy.eu.org/
-5. https://doi.org/10.3390/info14080457
-6. https://doi.org/10.1371/journal.pone.0251867
-7. https://doi.org/10.3390/fi13030058
+2. OWASP Mobile Security Testing Guide.
+3. MobSF (Mobile Security Framework).
+4. Exodus Privacy.
